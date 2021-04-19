@@ -1,0 +1,7 @@
+.metadata/
+.gradle/
+.settings/
+.bin/
+gradle/
+.class
+
