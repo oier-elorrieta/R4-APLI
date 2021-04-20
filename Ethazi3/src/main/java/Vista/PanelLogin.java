@@ -38,7 +38,7 @@ public class PanelLogin extends JPanel {
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
-		btnSarratu = new JButton("SARRATU ");
+		btnSarratu = new JButton("ATZERA ");
 		btnSarratu.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		btnSarratu.setBounds(350, 260, 90, 30);
 		add(btnSarratu);

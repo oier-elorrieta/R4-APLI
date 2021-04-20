@@ -48,7 +48,7 @@ public class ControladorPanelLogin {
 	} 
 
 	public void sakatuAtzeraBotoia() {
-		this.controlador.itxi();
+		this.controlador.nabegatzenPanelHasiera();
 	}
 	
 	public Erabiltzaile sartuErabiltzaile(String erabiltzailea, String pasahitza) {

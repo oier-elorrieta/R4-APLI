@@ -10,6 +10,7 @@ public class Controlador {
 	
 	private Vista vista;
 	
+	private ControladorPanelHasiera controladorPanelHasiera;
 	private ControladorPanelLogin controladorPanelLogin;
 	private ControladorPanelErregistratu controladorPanelErregistratu; 
 	private ControladorPanelMenuJatetxea controladorPanelJatetxea;	
@@ -25,6 +26,7 @@ public class Controlador {
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
+		this.controladorPanelHasiera = new ControladorPanelHasiera(this.vista, this);
 		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.modelo);
 		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.modelo);
 		this.controladorPanelJatetxea = new ControladorPanelMenuJatetxea(this.vista, this, this.modelo);
@@ -36,7 +38,11 @@ public class Controlador {
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
 		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelKomanda = new ControladorPanelKomanda(this.modelo, this.vista, this);
-		this.nabegatzenPanelLogin();
+		this.nabegatzenPanelHasiera();
+	}
+	
+	public void nabegatzenPanelHasiera() {
+		this.controladorPanelHasiera.ikusiPanelHasiera();
 	}
 	
 	public void nabegatzenPanelLogin() {

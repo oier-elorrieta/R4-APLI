@@ -20,6 +20,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="lib" path="libreria/BBDD.jar"/>
-	<classpathentry kind="lib" path="libreria/mysql-connector-java-8.0.23 (1).jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
