@@ -3,8 +3,6 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,15 +26,10 @@ public class PanelKomanda extends JPanel {
 	private ControladorPanelKomanda controladorPanelKomanda;
 
 	private JTextField tf_Titulua;
-	private JTextField tf_Fecha;
 	private JTextField tf_Lokala;
 	private JTextField tf_TransferentziaZenbakia;
-	private JTextField tf_Totala;
-
-	private JLabel lb_Data;
 	private JLabel lb_Lokala;
 	private JLabel lb_TransferentziaZenbakia;
-	private JLabel lb_Totala;
 	private JLabel argazkiak;
 
 	private JButton btnAtzera;
@@ -55,9 +48,6 @@ public class PanelKomanda extends JPanel {
 	private String[] platerMotak;
 
 	private int TransferentziaZenbakia;
-	private int anyo;
-	private int mes;
-	private int dia;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -67,11 +57,6 @@ public class PanelKomanda extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
-		Calendar fecha = new GregorianCalendar();
-
-		anyo = fecha.get(Calendar.YEAR);
-		mes = fecha.get(Calendar.MONTH);
-		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -85,13 +70,6 @@ public class PanelKomanda extends JPanel {
 		tf_Titulua.setColumns(10);
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
-
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
-		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Fecha.setBounds(367, 36, 75, 20);
-		tf_Fecha.setColumns(10);
-		tf_Fecha.setEditable(false);
-		add(tf_Fecha);
 
 		tf_Lokala = new JTextField(controladorPanelKomanda.konprobatuLokalarenIzena());
 		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
@@ -109,25 +87,10 @@ public class PanelKomanda extends JPanel {
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
+		tf_TransferentziaZenbakia.setBounds(367, 36, 75, 20);
 		tf_TransferentziaZenbakia.setColumns(10);
 		tf_TransferentziaZenbakia.setEditable(false);
 		add(tf_TransferentziaZenbakia);
-
-		tf_Totala = new JTextField("0.0");
-		tf_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Totala.setBounds(61, 267, 183, 20);
-		tf_Totala.setColumns(10);
-		tf_Totala.setEditable(false);
-		add(tf_Totala);
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		lb_Data = new JLabel("Data:");
-		lb_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_Data.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Data.setBounds(328, 39, 46, 14);
-		add(lb_Data);
 
 		lb_Lokala = new JLabel("Lokala:");
 		lb_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -138,13 +101,8 @@ public class PanelKomanda extends JPanel {
 		lb_TransferentziaZenbakia = new JLabel("Trans Zbk:");
 		lb_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lb_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
+		lb_TransferentziaZenbakia.setBounds(300, 36, 57, 14);
 		add(lb_TransferentziaZenbakia);
-
-		lb_Totala = new JLabel("Totala:");
-		lb_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Totala.setBounds(20, 270, 46, 14);
-		add(lb_Totala);
 
 		argazkiak = new JLabel();
 		argazkiak.setBounds(254, 67, 188, 154);
@@ -170,17 +128,17 @@ public class PanelKomanda extends JPanel {
 		add(btnSegi);
 
 		rdbtnLehenengoa = new JRadioButton("Lehenengoa");
-		rdbtnLehenengoa.setBounds(30, 134, 211, 21);
+		rdbtnLehenengoa.setBounds(30, 162, 211, 21);
 		rdbtnLehenengoa.setEnabled(false);
 		add(rdbtnLehenengoa);
 
 		rdbtnBigarrena = new JRadioButton("Bigarrena");
-		rdbtnBigarrena.setBounds(30, 165, 211, 21);
+		rdbtnBigarrena.setBounds(30, 200, 211, 21);
 		rdbtnBigarrena.setEnabled(false);
 		add(rdbtnBigarrena);
 
 		rdbtnPostre = new JRadioButton("Postre");
-		rdbtnPostre.setBounds(30, 200, 211, 21);
+		rdbtnPostre.setBounds(30, 233, 211, 21);
 		rdbtnPostre.setEnabled(false);
 		add(rdbtnPostre);
 
@@ -204,7 +162,7 @@ public class PanelKomanda extends JPanel {
 		produktuArrayaPantailaratu(platerrak);
 
 		cb_Mota = new JComboBox<String>();
-		cb_Mota.setBounds(30, 233, 214, 20);
+		cb_Mota.setBounds(30, 267, 214, 20);
 		add(cb_Mota);
 
 		platerMotak = controladorPanelKomanda.platerMotak();
@@ -214,7 +172,7 @@ public class PanelKomanda extends JPanel {
 		cb_Mota.setSelectedItem(null);
 
 		cb_Produktoak = new JComboBox<String>();
-		cb_Produktoak.setBounds(30, 99, 214, 20);
+		cb_Produktoak.setBounds(30, 118, 214, 20);
 		add(cb_Produktoak);
 
 		produktuak = controladorPanelKomanda.ComboBoxaSakatuProduktuak();
@@ -251,9 +209,15 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelKomanda.sakatuLaburpeneraBotoia();
+				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelKomanda.sakatuPanelJatetxeBotoia();
+				} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
+					controladorPanelKomanda.sakatuPanelTabernaBotoia();
+				} else {
+					controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
+				}
 				try {
-					controladorPanelKomanda.sartuKomanda(anyo, mes, dia);
+					controladorPanelKomanda.sartuKomanda();
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
@@ -315,9 +279,6 @@ public class PanelKomanda extends JPanel {
 						}
 					}
 				}
-
-				String diruTotala = String.valueOf(controladorPanelKomanda.diruTotala());
-				tf_Totala.setText(diruTotala);
 
 				rdbtnLehenengoa.setEnabled(false);
 				rdbtnLehenengoa.setSelected(false);

@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JMenu;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -26,16 +26,9 @@ public class PanelMenuJatetxea extends JPanel {
 	private JButton btnKomanda;
 	private JButton btnHornikuntza;
 	private JMenuBar menuBar;
-	private JMenu menuOperatibitatea;
-	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
-	private String[] top5produktuak;
-	private JMenuItem produktuak;
-	private JMenu egunero;
-	private JMenu astero;
-	private JMenuItem eguneroDirua;
-	private JMenuItem asteroDirua;
+
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -75,33 +68,6 @@ public class PanelMenuJatetxea extends JPanel {
 		menuBar.setBorderPainted(false);
 		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
-
-		menuOperatibitatea = new JMenu("Operatibitatea");
-		menuBar.add(menuOperatibitatea);
-
-		egunero = new JMenu("Egunean");
-		menuOperatibitatea.add(egunero);
-
-		astero = new JMenu("Astean");
-		menuOperatibitatea.add(astero);
-
-		asteroDirua = new JMenuItem(String.valueOf(controladorPanelJatetxea.asterokoIrabazia()));
-		astero.add(asteroDirua);
-
-		eguneroDirua = new JMenuItem(String.valueOf(controladorPanelJatetxea.egunerokoIrabazia()));
-		egunero.add(eguneroDirua);
-
-		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);
-
-		top5produktuak = controladorPanelJatetxea.top5produktuak();
-		for (int i = 0; i < top5produktuak.length; i++) {
-			if (top5produktuak[i] != null) {
-				produktuak = new JMenuItem();
-				produktuak.setText(top5produktuak[i]);
-				menuTop5.add(produktuak);
-			}
-		}
 
 		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
 		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);

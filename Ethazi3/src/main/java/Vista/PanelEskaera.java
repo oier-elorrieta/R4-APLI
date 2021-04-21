@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,16 +29,11 @@ public class PanelEskaera extends JPanel {
 	private ControladorPanelEskaera controladorPanelEskaera;
 
 	private JTextField tf_Titulua;
-	private JTextField tf_Fecha;
 	private JTextField tf_Lokala;
 	private JTextField tf_TransferentziaZenbakia;
-	private JTextField tf_Totala;
 	private JTextField tf_Helbide;
-
-	private JLabel lb_Data;
 	private JLabel lb_Lokala;
 	private JLabel lb_TransferentziaZenbakia;
-	private JLabel lb_Totala;
 	private JLabel argazkiak;
 
 	private JButton btnAtzera;
@@ -54,9 +47,6 @@ public class PanelEskaera extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
-	private int anyo;
-	private int mes;
-	private int dia;
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -66,12 +56,6 @@ public class PanelEskaera extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
-		Calendar fecha = new GregorianCalendar();
-
-		anyo = fecha.get(Calendar.YEAR);
-		mes = fecha.get(Calendar.MONTH);
-		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -85,13 +69,6 @@ public class PanelEskaera extends JPanel {
 		tf_Titulua.setColumns(10);
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
-
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
-		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Fecha.setBounds(367, 36, 75, 20);
-		tf_Fecha.setColumns(10);
-		tf_Fecha.setEditable(false);
-		add(tf_Fecha);
 
 		tf_Lokala = new JTextField(controladorPanelEskaera.konprobatuLokalarenIzena());
 		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
@@ -109,32 +86,17 @@ public class PanelEskaera extends JPanel {
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
+		tf_TransferentziaZenbakia.setBounds(367, 35, 75, 20);
 		tf_TransferentziaZenbakia.setColumns(10);
 		tf_TransferentziaZenbakia.setEditable(false);
 		add(tf_TransferentziaZenbakia);
 
-		tf_Totala = new JTextField("0.0");
-		tf_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Totala.setBounds(61, 267, 183, 20);
-		tf_Totala.setColumns(10);
-		tf_Totala.setEditable(false);
-		add(tf_Totala);
-
 		tf_Helbide = new JTextField("");
 		tf_Helbide.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Helbide.setBounds(87, 233, 157, 20);
+		tf_Helbide.setBounds(87, 267, 157, 20);
 		tf_Helbide.setColumns(10);
 		tf_Helbide.setEnabled(false);
 		add(tf_Helbide);
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		lb_Data = new JLabel("Data:");
-		lb_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_Data.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Data.setBounds(328, 39, 46, 14);
-		add(lb_Data);
 
 		lb_Lokala = new JLabel("Lokala:");
 		lb_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -145,13 +107,8 @@ public class PanelEskaera extends JPanel {
 		lb_TransferentziaZenbakia = new JLabel("Trans Zbk:");
 		lb_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lb_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
+		lb_TransferentziaZenbakia.setBounds(300, 38, 57, 14);
 		add(lb_TransferentziaZenbakia);
-
-		lb_Totala = new JLabel("Totala:");
-		lb_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Totala.setBounds(20, 270, 46, 14);
-		add(lb_Totala);
 
 		argazkiak = new JLabel();
 		argazkiak.setBounds(254, 67, 188, 154);
@@ -179,7 +136,7 @@ public class PanelEskaera extends JPanel {
 
 		rb_Helbide = new JRadioButton("Helbide");
 		rb_Helbide.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		rb_Helbide.setBounds(20, 233, 60, 20);
+		rb_Helbide.setBounds(21, 267, 60, 20);
 		add(rb_Helbide);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
@@ -224,9 +181,15 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelEskaera.sakatuLaburpeneraBotoia();
+				if (controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelEskaera.sakatuPanelJatetxeBotoia();
+				} else if (controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
+					controladorPanelEskaera.sakatuPanelTabernaBotoia();
+				} else {
+					controladorPanelEskaera.sakatuPanelKafetegiaBotoia();
+				}
 				try {
-					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText(), anyo, mes, dia);
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}
@@ -266,9 +229,6 @@ public class PanelEskaera extends JPanel {
 					if (kantitatea != 0) {
 						controladorPanelEskaera.sartu(aukera, kantitatea);
 					}
-
-					String diruTotala = String.valueOf(controladorPanelEskaera.diruTotala());
-					tf_Totala.setText(diruTotala); 
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);

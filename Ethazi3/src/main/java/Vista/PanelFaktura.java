@@ -3,9 +3,6 @@ package Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -31,18 +28,13 @@ public class PanelFaktura extends JPanel {
 	private ControladorPanelFaktura controladorPanelFaktura;
 
 	private JTextField tf_Titulua;
-	private JTextField tf_Fecha;
 	private JTextField tf_Lokala;
 	private JTextField tf_TransferentziaZenbakia;
-	private JTextField tf_Totala;
 	private JTextField tf_Izena;
 	private JTextField tf_Abizena;
 	private JTextField tf_NIF;
-
-	private JLabel lb_Data;
 	private JLabel lb_Lokala;
 	private JLabel lb_TransferentziaZenbakia;
-	private JLabel lb_Totala;
 	private JLabel lb_Izena;
 	private JLabel lb_Abizena;
 	private JLabel lb_NIF;
@@ -58,9 +50,6 @@ public class PanelFaktura extends JPanel {
 	private String[] produktuak;
 
 	private int TransferentziaZenbakia;
-	private int anyo;
-	private int mes;
-	private int dia;
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -70,12 +59,6 @@ public class PanelFaktura extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
-		Calendar fecha = new GregorianCalendar();
-
-		anyo = fecha.get(Calendar.YEAR);
-		mes = fecha.get(Calendar.MONTH);
-		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -89,13 +72,6 @@ public class PanelFaktura extends JPanel {
 		tf_Titulua.setColumns(10);
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
-
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo); 
-		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Fecha.setBounds(367, 36, 75, 20);
-		tf_Fecha.setColumns(10);
-		tf_Fecha.setEditable(false);
-		add(tf_Fecha);
 
 		tf_Lokala = new JTextField(controladorPanelFaktura.komprobatuLokalarenIzena());
 		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
@@ -113,45 +89,30 @@ public class PanelFaktura extends JPanel {
 
 		tf_TransferentziaZenbakia = new JTextField(String.valueOf(TransferentziaZenbakia));
 		tf_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_TransferentziaZenbakia.setBounds(226, 36, 75, 20);
+		tf_TransferentziaZenbakia.setBounds(367, 35, 75, 20);
 		tf_TransferentziaZenbakia.setColumns(10);
 		tf_TransferentziaZenbakia.setEditable(false);
 		add(tf_TransferentziaZenbakia);
 
-		tf_Totala = new JTextField("0.0");
-		tf_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Totala.setBounds(61, 267, 183, 20);
-		tf_Totala.setColumns(10);
-		tf_Totala.setEditable(false);
-		add(tf_Totala);
-
 		tf_Izena = new JTextField();
 		tf_Izena.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Izena.setBounds(61, 173, 183, 20);
+		tf_Izena.setBounds(61, 202, 183, 20);
 		tf_Izena.setColumns(10);
 		add(tf_Izena);
 
 		tf_Abizena = new JTextField();
 		tf_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Abizena.setBounds(61, 204, 183, 20);
+		tf_Abizena.setBounds(61, 233, 183, 20);
 		tf_Abizena.setColumns(10);
 		add(tf_Abizena);
 
 		tf_NIF = new JTextField(controladorPanelFaktura.konprobatuNIF());
 		tf_NIF.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		tf_NIF.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_NIF.setBounds(61, 233, 183, 20);
+		tf_NIF.setBounds(61, 267, 183, 20);
 		tf_NIF.setColumns(10);
 		tf_NIF.setEditable(false);
 		add(tf_NIF);
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		lb_Data = new JLabel("Data:");
-		lb_Data.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_Data.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Data.setBounds(328, 39, 46, 14);
-		add(lb_Data);
 
 		lb_Lokala = new JLabel("Lokala:");
 		lb_Lokala.setFont(new Font("Tahoma", Font.PLAIN, 9));
@@ -162,30 +123,25 @@ public class PanelFaktura extends JPanel {
 		lb_TransferentziaZenbakia = new JLabel("Trans Zbk:");
 		lb_TransferentziaZenbakia.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lb_TransferentziaZenbakia.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_TransferentziaZenbakia.setBounds(170, 39, 57, 14);
+		lb_TransferentziaZenbakia.setBounds(300, 38, 57, 14);
 		add(lb_TransferentziaZenbakia);
-
-		lb_Totala = new JLabel("Totala:");
-		lb_Totala.setHorizontalAlignment(SwingConstants.CENTER);
-		lb_Totala.setBounds(20, 270, 46, 14);
-		add(lb_Totala);
 
 		lb_Izena = new JLabel("Izena:");
 		lb_Izena.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_Izena.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_Izena.setBounds(20, 176, 46, 14);
+		lb_Izena.setBounds(10, 205, 46, 14);
 		add(lb_Izena);
 
 		lb_Abizena = new JLabel("Abizena");
 		lb_Abizena.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_Abizena.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_Abizena.setBounds(20, 207, 46, 14);
+		lb_Abizena.setBounds(5, 236, 46, 14);
 		add(lb_Abizena);
 
 		lb_NIF = new JLabel("NIF");
 		lb_NIF.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_NIF.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lb_NIF.setBounds(20, 236, 46, 14);
+		lb_NIF.setBounds(10, 270, 46, 14);
 		add(lb_NIF);
 
 		argazkiak = new JLabel();
@@ -253,9 +209,15 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelFaktura.sakatuLaburpeneraBotoia();
+				if (controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
+					controladorPanelFaktura.sakatuPanelJatetxeBotoia();
+				} else if (controladorPanelFaktura.konprobatuLokala().equals("Bar")) {
+					controladorPanelFaktura.sakatuPanelTabernaBotoia();
+				} else {
+					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
+				}
 				try {
-					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText(), anyo, mes, dia);
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} 
@@ -295,9 +257,6 @@ public class PanelFaktura extends JPanel {
 					if (kantitatea != 0) {
 						controladorPanelFaktura.sartu(aukera, kantitatea);
 					}
-
-					String diruTotala = String.valueOf(controladorPanelFaktura.diruTotala());
-					tf_Totala.setText(diruTotala); 
 				}
 				nºunidades.setValue(0);
 				btnSegi.setEnabled(false);

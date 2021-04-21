@@ -20,7 +20,6 @@ public class Controlador {
 	private ControladorPanelFaktura controladorPanelFaktura;
 	private ControladorPanelTicket controladorPanelTicket;
 	private ControladorPanelEskaera controladorPanelPedidos; 
-	private ControladorPanelLaburpena controladorPanelLaburpena;
 	private ControladorPanelKomanda controladorPanelKomanda;
 
 	public Controlador(Modelo modelo, Vista vista) {
@@ -36,7 +35,6 @@ public class Controlador {
 		this.controladorPanelHornikuntza = new ControladorPanelHornikuntza(this.vista, this, this.modelo);
 		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
 		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
-		this.controladorPanelLaburpena =  new ControladorPanelLaburpena(this.modelo, this.vista, this);
 		this.controladorPanelKomanda = new ControladorPanelKomanda(this.modelo, this.vista, this);
 		this.nabegatzenPanelHasiera();
 	}
@@ -79,14 +77,6 @@ public class Controlador {
 	
 	public void nabegatzenPanelPedidos() {
 		this.controladorPanelPedidos.ikusiPanelPedidos();
-	}
-	
-	public void nabegatzenPanelLaburpena(){ 
-		try {
-			this.controladorPanelLaburpena.ikusiPanelLaburpena();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void nabegatzenPanelKomanda() {

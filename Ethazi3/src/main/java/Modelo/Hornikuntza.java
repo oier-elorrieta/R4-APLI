@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class hornikuntza extends operaciones{
+public class Hornikuntza extends Operaciones{
 
 	private int produktu_kantitatea;
 
-	public hornikuntza(int transferentziaZenbakia, double totala, String produktua, String nIF, int produktu_kantitatea) {
+	public Hornikuntza(int transferentziaZenbakia, double totala, String produktua, String nIF, int produktu_kantitatea) {
 		super(transferentziaZenbakia, totala, produktua, nIF);
 		this.produktu_kantitatea = produktu_kantitatea;
 	}

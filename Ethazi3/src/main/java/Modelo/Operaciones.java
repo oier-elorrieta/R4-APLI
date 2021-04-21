@@ -6,14 +6,14 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public abstract class operaciones {
+public abstract class Operaciones {
 
 	protected int transferentziaZenbakia;
 	protected double totala;
 	protected String produktua; 
 	protected String NIF; 
 
-	public operaciones(int transferentziaZenbakia, double totala, String produktua, String nIF) {
+	public Operaciones(int transferentziaZenbakia, double totala, String produktua, String nIF) {
 		this.transferentziaZenbakia = transferentziaZenbakia;
 		this.totala = totala;
 		this.produktua = produktua; 

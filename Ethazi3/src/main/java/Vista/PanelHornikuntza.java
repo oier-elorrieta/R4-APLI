@@ -5,16 +5,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import Controlador.ControladorPanelHornikuntza;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 
@@ -32,12 +28,6 @@ public class PanelHornikuntza extends JPanel {
 	private JSpinner nºunidades;
 	private String[] produktuak;
 
-	private JTextField tf_Fecha;
-
-	private int anyo;
-	private int mes;
-	private int dia;
-
 	// *****************************************************************************************************************************************************************************************************
 
 	public PanelHornikuntza(ControladorPanelHornikuntza controladorPanelHornikuntza) {
@@ -47,12 +37,6 @@ public class PanelHornikuntza extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(0, 0, 450, 300);
 		setLayout(null);
-
-		Calendar fecha = new GregorianCalendar();
-
-		anyo = fecha.get(Calendar.YEAR);
-		mes = fecha.get(Calendar.MONTH);
-		dia = fecha.get(Calendar.DAY_OF_MONTH);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -70,15 +54,6 @@ public class PanelHornikuntza extends JPanel {
 		btnSegi.setBounds(351, 234, 89, 23);
 		btnSegi.setEnabled(false);
 		add(btnSegi);
-
-		// _______________________________________________________________________________________________________________________________________________________________________________
-
-		tf_Fecha = new JTextField(dia + "/" + (mes + 1) + "/" + anyo);
-		tf_Fecha.setHorizontalAlignment(SwingConstants.CENTER);
-		tf_Fecha.setBounds(351, 203, 89, 20);
-		tf_Fecha.setColumns(10);
-		tf_Fecha.setEditable(false);
-		add(tf_Fecha);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -133,7 +108,7 @@ public class PanelHornikuntza extends JPanel {
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 				String nif = controladorPanelHornikuntza.konprobatuNIF();
 				try {
-					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, anyo, mes, dia, nif,kantitatea);
+					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, nif,kantitatea);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

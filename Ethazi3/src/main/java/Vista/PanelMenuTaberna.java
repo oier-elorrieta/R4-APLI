@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -23,16 +22,8 @@ public class PanelMenuTaberna extends JPanel {
 	private JButton btnTicket;
 	private JButton btnHornikuntza;
 	private JMenuBar menuBar;
-	private JMenu menuOperatibitatea;
-	private JMenu menuTop5;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
-	private String[] top5produktuak;
-	private JMenuItem produktuak;
-	private JMenu egunero;
-	private JMenu astero;
-	private JMenuItem eguneroDirua;
-	private JMenuItem asteroDirua;
 
 	// *****************************************************************************************************************************************************************************************************
 
@@ -63,38 +54,11 @@ public class PanelMenuTaberna extends JPanel {
 		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
 
-		menuOperatibitatea = new JMenu("Operatibitatea");
-		menuBar.add(menuOperatibitatea);
-
-		egunero = new JMenu("Egunean");
-		menuOperatibitatea.add(egunero);
-
-		astero = new JMenu("Astean");
-		menuOperatibitatea.add(astero);
-
-		asteroDirua = new JMenuItem(String.valueOf(controladorPanelMenuTaberna.asterokoIrabazia()));
-		astero.add(asteroDirua);
-
-		eguneroDirua = new JMenuItem(String.valueOf(controladorPanelMenuTaberna.egunerokoIrabazia()));
-		egunero.add(eguneroDirua);
-
-		menuTop5 = new JMenu("Top5 Salmentak");
-		menuBar.add(menuTop5);
-
-		top5produktuak = controladorPanelMenuTaberna.top5produktuak();
-		for (int i = 0; i < top5produktuak.length; i++) {
-			if (top5produktuak[i] != null) {
-				produktuak = new JMenuItem();
-				produktuak.setText(top5produktuak[i]);
-				menuTop5.add(produktuak);
-			}
-		}
-
 		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
-		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		menuBar.add(menuItemDeslogeatu);
-
+		
 		menuItemSarratu = new JMenuItem("X");
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);

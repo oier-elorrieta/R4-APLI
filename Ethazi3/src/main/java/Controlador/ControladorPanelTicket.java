@@ -26,10 +26,6 @@ public class ControladorPanelTicket {
 		this.vista.ikusiPanela(panelTicket);
 	}
 
-	public void sakatuLaburpeneraBotoia() {
-		this.controlador.nabegatzenPanelLaburpena();
-	}
-
 	public void sakatuAtzeraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
 		this.modelo.ezabatuProduktuenArraya();
@@ -51,8 +47,8 @@ public class ControladorPanelTicket {
 		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public void gordeTicket(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
-		this.modelo.sartuTicket(anyo, mes, dia);
+	public void gordeTicket() throws ClassNotFoundException, SQLException {
+		this.modelo.sartuTicket();
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {

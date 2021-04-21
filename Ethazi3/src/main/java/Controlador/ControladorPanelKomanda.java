@@ -27,10 +27,6 @@ public class ControladorPanelKomanda {
 		this.vista.ikusiPanela(this.panelKomanda);
 	}
 	
-	public void sakatuLaburpeneraBotoia() {
-		this.controlador.nabegatzenPanelLaburpena();
-	}
-	
 	public void sakatuAtzeraBotoia() {
 		this.controlador.nabegatzenPanelLogin();
 		this.modelo.ezabatuProduktuenArraya();
@@ -90,8 +86,8 @@ public class ControladorPanelKomanda {
 		return this.modelo.platerKodea(platerra);
 	}
 	
-	public void sartuKomanda(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException{
-		this.modelo.sartuKomanda(anyo, mes, dia);
+	public void sartuKomanda() throws ClassNotFoundException, SQLException{
+		this.modelo.sartuKomanda();
 	} 
 	
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException {

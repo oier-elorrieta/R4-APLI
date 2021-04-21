@@ -6,10 +6,10 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class komanda extends operaciones{
+public class Komanda extends Operaciones{
 
 
-	public komanda(int transferentziaZenbakia, double totala, String produktua, String nIF) {
+	public Komanda(int transferentziaZenbakia, double totala, String produktua, String nIF) {
 		super(transferentziaZenbakia, totala, produktua, nIF); 
 	}
 

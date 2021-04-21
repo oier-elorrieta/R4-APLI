@@ -6,11 +6,11 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class eskaera extends operaciones{
+public class Eskaera extends Operaciones{
 
 	private String helbidea;
 
-	public eskaera(int transferentziaZenbakia, double totala, String produktua, String nIF, String helbidea) {
+	public Eskaera(int transferentziaZenbakia, double totala, String produktua, String nIF, String helbidea) {
 		super(transferentziaZenbakia, totala, produktua, nIF);
 		this.helbidea = helbidea;
 	}

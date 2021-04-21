@@ -1,9 +1,9 @@
 package Modelo;
 
 
-public class ticket extends operaciones{
+public class Ticket extends Operaciones{
 
-	public ticket(int transferentziaZenbakia, double totala, String produktua, String nIF) {
+	public Ticket(int transferentziaZenbakia, double totala, String produktua, String nIF) {
 		super(transferentziaZenbakia, totala, produktua, nIF);
 	}
 

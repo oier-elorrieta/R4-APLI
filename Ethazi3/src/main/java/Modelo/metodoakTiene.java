@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class metodoakTiene {
 
-	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile, int anyo, int mes, int dia) throws ClassNotFoundException, SQLException {
+	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile) throws ClassNotFoundException, SQLException {
 		for (int i = 0; i < karroa.size(); i++) {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
@@ -19,10 +19,10 @@ public class metodoakTiene {
 			String operazioMota = jasoOperazioMota();
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
-				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia, operazioMota);
+				gehituVende(elikagaia, erabiltzaile, operazioMota);
 			} else {
 				updateTiene(elikagaia, kopurua, prezioa);
-				gehituVende(elikagaia, erabiltzaile, anyo, mes, dia, operazioMota);
+				gehituVende(elikagaia, erabiltzaile, operazioMota);
 			}
 		}
 	}
@@ -76,10 +76,10 @@ public class metodoakTiene {
 
 	}
 
-	public static void gehituVende(String elikagaia, String erabiltzailea, int anyo, int mes, int dia, String operazioMota) throws ClassNotFoundException, SQLException {
+	public static void gehituVende(String elikagaia, String erabiltzailea, String operazioMota) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
-				metodoakHornikuntza.sartuHornikuntza(elikagaia, anyo, (mes-1), dia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+				metodoakHornikuntza.sartuHornikuntza(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
 			}
 		}
 	}

@@ -8,12 +8,12 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class faktura extends operaciones{
+public class Faktura extends Operaciones{
 
 	private String izena_hartzaile;
 	private String abizena_hartzaile;
 
-	public faktura(int transferentziaZenbakia, double totala, String produktua, String nIF, String izena_hartzaile, String abizena_hartzaile) {
+	public Faktura(int transferentziaZenbakia, double totala, String produktua, String nIF, String izena_hartzaile, String abizena_hartzaile) {
 		super(transferentziaZenbakia, totala, produktua, nIF);
 		this.izena_hartzaile = izena_hartzaile;
 		this.abizena_hartzaile = abizena_hartzaile;
