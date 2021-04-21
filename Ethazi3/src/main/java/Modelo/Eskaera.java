@@ -10,7 +10,7 @@ public class Eskaera extends Operaciones{
 
 	private String helbidea;
 
-	public Eskaera(int transferentziaZenbakia, double totala, String produktua, String nIF, String helbidea) {
+	public Eskaera(int transferentziaZenbakia, double totala, String nIF, String helbidea) {
 		super(transferentziaZenbakia, totala, nIF);
 		this.helbidea = helbidea;
 	}

@@ -1,6 +1,5 @@
 package Controlador;
 
-import Modelo.Modelo;
 import Vista.PanelMenuJatetxea;
 import Vista.Vista;
 
@@ -9,12 +8,10 @@ public class ControladorPanelMenuJatetxea {
 	private Vista vista;
 	private Controlador controlador;
 	private PanelMenuJatetxea panelMenuJatetxea;
-	private Modelo modelo;
 
-	public ControladorPanelMenuJatetxea(Vista vista, Controlador controlador, Modelo modelo) {
+	public ControladorPanelMenuJatetxea(Vista vista, Controlador controlador) {
 		this.vista = vista;
 		this.controlador = controlador;	
-		this.modelo = modelo;
 	}
 
 	public void ikusipanelMenuJatetxea() {
@@ -48,17 +45,5 @@ public class ControladorPanelMenuJatetxea {
 
 	public void sakatuKomandaPanelaIkustekoBotoia() {
 		this.controlador.nabegatzenPanelKomanda();
-	}
-
-	public String[] top5produktuak() {
-		return this.modelo.top5produktuak();
-	}
-
-	public double egunerokoIrabazia() {
-		return this.modelo.egunerokoIrabazia();
-	}
-
-	public double asterokoIrabazia() {
-		return this.modelo.asterokoIrabazia();
-	}
+	}  
 }

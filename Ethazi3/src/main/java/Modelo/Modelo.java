@@ -121,18 +121,25 @@ public class Modelo {
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {
 		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), metodoak.jasoTransakzioZbk(),konprobatuNIF());
+		t1.sartuOperaciones();
 	}
 
 	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		metodoakEskaera.sartuEskaera(konprobatuNIF(), diruTotala(), helbidea, metodoak.jasoTransakzioZbk());
+		Eskaera es1 = new Eskaera(metodoak.jasoTransakzioZbk(), diruTotala(), konprobatuNIF(), helbidea);
+		es1.sartuOperaciones();
+		es1.sartuEskaera();
 	}
 
 	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		metodoakFaktura.sartuFaktura(konprobatuNIF(), izena, abizena, diruTotala(), metodoak.jasoTransakzioZbk());
+		Faktura f1 = new Faktura(metodoak.jasoTransakzioZbk(), diruTotala(), konprobatuNIF(), izena, abizena);
+		f1.sartuOperaciones();
+		f1.sartuFaktura();
 	} 
 
-	public void sartuHornikuntza(String produktua, String nif, int kantitatea) throws ClassNotFoundException, SQLException {
-		metodoakHornikuntza.sartuHornikuntza(produktua, nif, kantitatea);
+	public void sartuHornikuntza(String produktua, String nif, int kantitatea) throws ClassNotFoundException, SQLException { 
+		Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), diruTotala(), produktua, nif, kantitatea);
+		h1.sartuOperaciones();
+		h1.sartuHornikuntza();
 	}
 
 	public void sartuTiene()  {
@@ -144,42 +151,30 @@ public class Modelo {
 	}
 
 	public void sartuKomanda() throws ClassNotFoundException, SQLException  {
-		k1.setTotala(diruTotala());
+		Komanda k1 = hasieratuOperaciones();
 		k1.setNIF(konprobatuNIF());
-		k1.setProduktua(produktua);
-		k1.setTransferentziaZenbakia(jasoTransakzioZbk()-1);
+		k1.setTotala(diruTotala());
 	} 
 
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{
 		metodoakIncluye.incluye(platerKodea, kantitatea, diruTotala(), konprobatuNIF());
 	}
 
-	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException   {
-		metodoakKomanda.hasieratuOperaciones();
+	public Komanda hasieratuOperaciones() throws ClassNotFoundException, SQLException {
+		Komanda k1 = new Komanda(metodoak.jasoTransakzioZbk(), 0, null);
+		k1.hasieratuOperaciones();
+		return k1;
 	}
 
 	public void ofrece() {
 		metodoakOfrece.localOfrece(konprobatuNIF());
 	}
 
-	Komanda k1 = new Komanda(0, 0, null, null, null);
-
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
 	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
-		metodoakKomanda.ezabatuKomanda();
-	}
-
-	public String[] top5produktuak(){
-		return metodoakMenuBar.top5produktuak(usuarioa.getErabiltzailea());
-	}
-
-	public double egunerokoIrabazia() {
-		return metodoakMenuBar.egunerokoIrabazia(usuarioa.getErabiltzailea());
-	}
-
-	public double asterokoIrabazia() {
-		return metodoakMenuBar.asterokoIrabazia(usuarioa.getErabiltzailea());
+		Komanda k1 = hasieratuOperaciones();
+		k1.ezabatuKomanda();
 	}
 }
