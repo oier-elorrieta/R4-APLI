@@ -10,13 +10,11 @@ public abstract class Operaciones {
 
 	protected int transferentziaZenbakia;
 	protected double totala;
-	protected String produktua; 
 	protected String NIF; 
 
-	public Operaciones(int transferentziaZenbakia, double totala, String produktua, String nIF) {
+	public Operaciones(int transferentziaZenbakia, double totala, String nIF) {
 		this.transferentziaZenbakia = transferentziaZenbakia;
 		this.totala = totala;
-		this.produktua = produktua; 
 		NIF = nIF;
 	}
 
@@ -36,14 +34,6 @@ public abstract class Operaciones {
 		this.totala = totala;
 	}
 
-	public String getProduktua() {
-		return produktua;
-	}
-
-	public void setProduktua(String produktua) {
-		this.produktua = produktua;
-	}
-
 	public String getNIF() {
 		return NIF;
 	}
@@ -54,7 +44,7 @@ public abstract class Operaciones {
 
 	public void sartuOperaciones() {
 		Connection konekzioa = BBDDKonexioa.getConexion(); 
-		String query1 = (Kontsultak.insertOperaciones + "('" + this.transferentziaZenbakia + "' ,'" + this.totala + "','" + this.NIF + "', '" + this.produktua + "')");
+		String query1 = (Kontsultak.insertOperaciones + "('" + this.transferentziaZenbakia + "' ,'" + this.totala + "','" + this.NIF + "')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();

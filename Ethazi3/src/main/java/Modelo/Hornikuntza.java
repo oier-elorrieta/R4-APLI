@@ -11,9 +11,11 @@ import javax.swing.JOptionPane;
 public class Hornikuntza extends Operaciones{
 
 	private int produktu_kantitatea;
-
+	private String produktua;
+	
 	public Hornikuntza(int transferentziaZenbakia, double totala, String produktua, String nIF, int produktu_kantitatea) {
-		super(transferentziaZenbakia, totala, produktua, nIF);
+		super(transferentziaZenbakia, totala, nIF);
+		this.produktua = produktua;
 		this.produktu_kantitatea = produktu_kantitatea;
 	}
 
