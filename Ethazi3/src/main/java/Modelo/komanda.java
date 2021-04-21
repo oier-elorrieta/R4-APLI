@@ -6,9 +6,18 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
-public class metodoakKomanda {
+public class komanda extends operaciones{
 
-	public static void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
+
+	public komanda(int transferentziaZenbakia, double totala, String produktua, String nIF) {
+		super(transferentziaZenbakia, totala, produktua, nIF); 
+	}
+
+	public void sartuOperaciones() {
+		super.sartuOperaciones();
+	}
+
+	public void hasieratuOperaciones() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		int numTrans = metodoak.jasoTransakzioZbk();
 		String query1 = (Kontsultak.insertNumTransOperaciones + "" + numTrans + ")");
@@ -26,12 +35,9 @@ public class metodoakKomanda {
 		}
 	}
 
-	public static void sartuKomanda(double prezioa, String nif, int anyo, int mes, int dia)
-			throws ClassNotFoundException, SQLException {
+	public void sartuKomanda() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
-		char operazioMota = 'C';
-		String query1 = (Kontsultak.updateOperaciones + "'" + anyo + "/" + (mes + 1) + "/" + dia
-				+ "' , Total_Operaciones = " + prezioa + " , TipoOperacion = '" + operazioMota + "', NIF = '" + nif
+		String query1 = (Kontsultak.updateOperaciones + "'" + this.totala + " , NIF = '" + this.NIF
 				+ "' where Numtrans = (" + Kontsultak.selectMaxNumTransKomanda + ")");
 		try {
 			Statement s;
@@ -43,7 +49,7 @@ public class metodoakKomanda {
 		}
 	}
 
-	public static void ezabatuKomanda() throws ClassNotFoundException, SQLException {
+	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.delete);
 		try {

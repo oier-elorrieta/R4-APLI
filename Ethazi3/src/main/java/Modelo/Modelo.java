@@ -27,11 +27,11 @@ public class Modelo {
 	public String pantailaratuIzena() {
 		return metodoak.pantailatuProduktuaIzena(karroa);
 	}
-	
+
 	public String pantailaratuKopurua() {
 		return metodoak.pantailatuProduktuaKopurua(karroa);
 	}
-	
+
 	public String pantailaratuPrezioa() {
 		return metodoak.pantailatuProduktuaPrezioa(karroa);
 	}
@@ -144,6 +144,10 @@ public class Modelo {
 	}
 
 	public void sartuKomanda(int anyo, int mes, int dia) throws ClassNotFoundException, SQLException  {
+		k1.setTotala(diruTotala());
+		k1.setNIF(konprobatuNIF());
+		k1.setProduktua(produktua);
+		k1.setTransferentziaZenbakia(jasoTransakzioZbk()-1);
 		metodoakKomanda.sartuKomanda(diruTotala(),konprobatuNIF(), anyo, mes, dia);
 	} 
 
@@ -158,6 +162,8 @@ public class Modelo {
 	public void ofrece() {
 		metodoakOfrece.localOfrece(konprobatuNIF());
 	}
+
+	komanda k1 = new komanda(0, 0, null, null, null);
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
