@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
+import javax.swing.ImageIcon; 
 
 public class metodoak {
 
-	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) {
+	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) { 
 		double dirua = sartuDirua(elikagaia, kopuru);
 		Karritoa Prod = new Karritoa(elikagaia, kopuru, dirua);
-		karroa.add(Prod);
+		karroa.add(Prod); 
 		return karroa;
 	}
 

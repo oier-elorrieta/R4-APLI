@@ -10,7 +10,7 @@ public class Komanda extends Operaciones{
 
 
 	public Komanda(int transferentziaZenbakia, double totala, String nIF) {
-		super(transferentziaZenbakia, totala, nIF); 
+		super(transferentziaZenbakia, totala, nIF, 'K'); 
 	}
 
 	public void sartuOperaciones() {

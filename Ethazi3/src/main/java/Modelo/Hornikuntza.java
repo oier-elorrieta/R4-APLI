@@ -12,9 +12,9 @@ public class Hornikuntza extends Operaciones{
 
 	private int produktu_kantitatea;
 	private String produktua;
-	
+
 	public Hornikuntza(int transferentziaZenbakia, double totala, String produktua, String nIF, int produktu_kantitatea) {
-		super(transferentziaZenbakia, totala, nIF);
+		super(transferentziaZenbakia, totala, nIF, 'A');
 		this.produktua = produktua;
 		this.produktu_kantitatea = produktu_kantitatea;
 	}
@@ -53,10 +53,10 @@ public class Hornikuntza extends Operaciones{
 	public void sartuHornikuntza() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea();
-		int numTrans = metodoak.jasoTransakzioZbk();
+		int numTrans = metodoak.jasoTransakzioZbk()-1; 
 		double dirua = metodoak.jasoProduktuenPrezioa(this.produktua, this.produktu_kantitatea); 
 		String query1 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
-		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + numTrans + "," + this.produktu_kantitatea + "," + dirua+ ")");
+		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + numTrans + "," + this.produktu_kantitatea + "," + dirua+ ", '"+this.operazioMota+"')");
 		try { 
 			Statement s;
 			s = konekzioa.createStatement();

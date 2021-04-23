@@ -15,22 +15,22 @@ public class metodoakTiene {
 		for (int i = 0; i < karroa.size(); i++) {
 			String elikagaia = karroa.get(i).getElikagaia();
 			int kopurua = karroa.get(i).getKopuru();
-			double prezioa = karroa.get(i).getBalioa();
+			double prezioa = karroa.get(i).getBalioa(); 
 			String operazioMota = jasoOperazioMota();
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
-				gehituVende(elikagaia, erabiltzaile, operazioMota);
+				gehituVende(elikagaia, erabiltzaile);
 			} else {
-				updateTiene(elikagaia, kopurua, prezioa);
-				gehituVende(elikagaia, erabiltzaile, operazioMota);
+				updateTiene(elikagaia, kopurua, prezioa, operazioMota);
+				gehituVende(elikagaia, erabiltzaile);
 			}
 		}
 	}
 
 	public static void insertTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion(); 
+		Connection konekzioa = BBDDKonexioa.getConexion();  
 		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (metodoak.jasoTransakzioZbk() - 1) + ", " + kopurua
-				+ ", " + prezioa + ", '" + operazioMota + "')");
+				+ ", " + prezioa + ", '"+ operazioMota +"')");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -61,7 +61,7 @@ public class metodoakTiene {
 		return egia;
 	}
 
-	public static void updateTiene(String elikagaia, int kopurua, double prezioa) throws ClassNotFoundException, SQLException { 
+	public static void updateTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateTiene+"N_Unidades + " + kopurua + ", Precio = Precio + " + prezioa
 				+ " where NomProducto = '" + elikagaia + "' and NumTrans = "+(metodoak.jasoTransakzioZbk()-1)+"");
@@ -76,7 +76,7 @@ public class metodoakTiene {
 
 	}
 
-	public static void gehituVende(String elikagaia, String erabiltzailea, String operazioMota) throws ClassNotFoundException, SQLException {
+	public static void gehituVende(String elikagaia, String erabiltzailea) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
 				Hornikuntza h1 = new Hornikuntza(0, 0, elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);

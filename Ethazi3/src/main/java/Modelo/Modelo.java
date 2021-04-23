@@ -120,7 +120,7 @@ public class Modelo {
 	}
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), metodoak.jasoTransakzioZbk(),konprobatuNIF());
+		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), diruTotala(),konprobatuNIF());
 		t1.sartuOperaciones();
 	}
 
@@ -151,7 +151,7 @@ public class Modelo {
 	}
 
 	public void sartuKomanda() throws ClassNotFoundException, SQLException  {
-		Komanda k1 = hasieratuOperaciones();
+		Komanda k1 = hasieratuOperaciones(); 
 		k1.setNIF(konprobatuNIF());
 		k1.setTotala(diruTotala());
 	} 

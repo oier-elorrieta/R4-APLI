@@ -80,4 +80,8 @@ public class ControladorPanelFaktura {
 	public int begiratuStock(String produktua, String nif) {
 		return this.modelo.begiratuStock(produktua, nif);
 	}
+	
+	public void sartuTiene() {
+		this.modelo.sartuTiene();
+	}
 }

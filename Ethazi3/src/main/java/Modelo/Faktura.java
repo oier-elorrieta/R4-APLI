@@ -14,7 +14,7 @@ public class Faktura extends Operaciones{
 	private String abizena_hartzaile;
 
 	public Faktura(int transferentziaZenbakia, double totala, String nIF, String izena_hartzaile, String abizena_hartzaile) {
-		super(transferentziaZenbakia, totala, nIF);
+		super(transferentziaZenbakia, totala, nIF, 'F');
 		this.izena_hartzaile = izena_hartzaile;
 		this.abizena_hartzaile = abizena_hartzaile;
 	}

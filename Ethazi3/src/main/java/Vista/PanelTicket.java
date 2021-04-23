@@ -162,18 +162,19 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
+				try {
+					controladorPanelTicket.gordeTicket();
+					controladorPanelTicket.sartuTiene();
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				} if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelTicket.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelTicket.konprobatuLokala().equals("Bar")) {
 					controladorPanelTicket.sakatuPanelTabernaBotoia();
 				} else {
 					controladorPanelTicket.sakatuPanelKafetegiaBotoia();
 				}
-				try {
-					controladorPanelTicket.gordeTicket();
-				} catch (ClassNotFoundException | SQLException e) { 
-					e.printStackTrace();
-				} 			
+
 			}
 		};
 	}
@@ -207,7 +208,7 @@ public class PanelTicket extends JPanel {
 				if (kantitatea > stockKantitatea) {
 					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
-					if (kantitatea != 0) { 
+					if (kantitatea != 0) {  
 						controladorPanelTicket.sartu(aukera, kantitatea);
 					}
 				}

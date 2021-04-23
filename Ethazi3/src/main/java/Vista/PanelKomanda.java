@@ -209,6 +209,13 @@ public class PanelKomanda extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelKomanda controladorPanelKomanda) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelKomanda.sartuKomanda();
+					controladorPanelKomanda.sartuTiene();
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+				controladorPanelKomanda.ofrece();
 				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelKomanda.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
@@ -216,12 +223,7 @@ public class PanelKomanda extends JPanel {
 				} else {
 					controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
 				}
-				try {
-					controladorPanelKomanda.sartuKomanda();
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
-				}
-				controladorPanelKomanda.ofrece();
+
 			}
 		};
 	}
@@ -271,8 +273,7 @@ public class PanelKomanda extends JPanel {
 					int stockKantitatea = controladorPanelKomanda.begiratuStock(aukeraProduktua,
 							controladorPanelKomanda.konprobatuNIF());
 					if (kantitatea > stockKantitatea) {
-						JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",
-								JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",	JOptionPane.ERROR_MESSAGE);
 					} else {
 						if (kantitatea != 0) {
 							controladorPanelKomanda.sartu(aukeraProduktua, kantitatea);

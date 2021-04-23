@@ -209,18 +209,19 @@ public class PanelFaktura extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelFaktura controladorPanelFaktura) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
+				try {
+					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
+					controladorPanelFaktura.sartuTiene();
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				} if (controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelFaktura.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelFaktura.konprobatuLokala().equals("Bar")) {
 					controladorPanelFaktura.sakatuPanelTabernaBotoia();
 				} else {
 					controladorPanelFaktura.sakatuPanelKafetegiaBotoia();
 				}
-				try {
-					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
-				} catch (ClassNotFoundException | SQLException e) { 
-					e.printStackTrace();
-				} 
+
 			}
 		};
 	}

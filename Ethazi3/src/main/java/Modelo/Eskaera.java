@@ -11,7 +11,7 @@ public class Eskaera extends Operaciones{
 	private String helbidea;
 
 	public Eskaera(int transferentziaZenbakia, double totala, String nIF, String helbidea) {
-		super(transferentziaZenbakia, totala, nIF);
+		super(transferentziaZenbakia, totala, nIF, 'P');
 		this.helbidea = helbidea;
 	}
 

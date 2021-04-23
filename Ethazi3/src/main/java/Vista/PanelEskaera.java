@@ -181,18 +181,19 @@ public class PanelEskaera extends JPanel {
 	private ActionListener listenerLaburpeneraBotoia(ControladorPanelEskaera controladorPanelEskaera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
+				try {
+					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
+					controladorPanelEskaera.sartuTiene();
+				} catch (ClassNotFoundException | SQLException e) { 
+					e.printStackTrace();
+				}if (controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {
 					controladorPanelEskaera.sakatuPanelJatetxeBotoia();
 				} else if (controladorPanelEskaera.konprobatuLokala().equals("Bar")) {
 					controladorPanelEskaera.sakatuPanelTabernaBotoia();
 				} else {
 					controladorPanelEskaera.sakatuPanelKafetegiaBotoia();
 				}
-				try {
-					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
-				} catch (ClassNotFoundException | SQLException e) { 
-					e.printStackTrace();
-				}
+
 			}
 		};
 	}
