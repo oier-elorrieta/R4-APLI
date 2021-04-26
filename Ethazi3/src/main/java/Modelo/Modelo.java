@@ -112,11 +112,11 @@ public class Modelo {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) {
-		metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
+		usuarioa.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
 	}
 
 	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return metodoakErabiltzaile.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
+		return usuarioa.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
 	}
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {

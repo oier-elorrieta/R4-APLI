@@ -17,6 +17,7 @@ public class PanelHasiera extends JPanel {
 
 	private JButton btnDatuBasePo;
 	private JButton btnBigData;
+	private JButton btnSarratu;
 	private JTextField tf_1;
 	private JTextField tf_2;
 
@@ -39,6 +40,10 @@ public class PanelHasiera extends JPanel {
 		btnBigData.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBigData.setBounds(220, 77, 220, 150);
 		add(btnBigData);
+		
+		btnSarratu = new JButton("SARRATU");
+		btnSarratu.setBounds(351, 238, 89, 23);
+		add(btnSarratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 		
@@ -67,6 +72,7 @@ public class PanelHasiera extends JPanel {
 
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
+		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -79,4 +85,11 @@ public class PanelHasiera extends JPanel {
 		};
 	} 
 	
+	private ActionListener listenerSarratuBotoia(ControladorPanelHasiera controladorPanelHasiera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelHasiera.itxi();
+			}
+		};
+	} 
 }
