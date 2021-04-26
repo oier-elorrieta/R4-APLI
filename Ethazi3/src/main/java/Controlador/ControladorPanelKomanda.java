@@ -36,10 +36,6 @@ public class ControladorPanelKomanda {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
 
-	public double diruTotala() {
-		return this.modelo.diruTotala();
-	}	
-
 	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
 		return metodoak.argazkiaAukeratu(aukera);
 	}

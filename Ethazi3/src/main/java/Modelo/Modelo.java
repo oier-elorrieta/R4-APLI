@@ -37,7 +37,7 @@ public class Modelo {
 	}
 
 	public double diruTotala() {
-		return metodoak.diruTotala(karroa);
+		return metodoakFuntzioakDeitu.dirutotala();
 	}
 
 	public ArrayList<Karritoa> ezabatuProduktuenArraya() {
@@ -151,9 +151,10 @@ public class Modelo {
 	}
 
 	public void sartuKomanda() throws ClassNotFoundException, SQLException  {
-		Komanda k1 = hasieratuOperaciones(); 
+		Komanda k1 = new Komanda(0, 0, null); 
 		k1.setNIF(konprobatuNIF());
 		k1.setTotala(diruTotala());
+		k1.sartuKomanda();
 	} 
 
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{

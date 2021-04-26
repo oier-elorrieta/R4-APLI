@@ -32,11 +32,7 @@ public class ControladorPanelEskaera {
 
 	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
 		return this.modelo.sartu(elikagaia, kopuru);
-	}
-
-	public double diruTotala() {
-		return this.modelo.diruTotala();
-	}
+	} 
 
 	public ImageIcon argazkiaAukeratu(String aukera) {
 		return this.modelo.argazkiaAukeratu(aukera);

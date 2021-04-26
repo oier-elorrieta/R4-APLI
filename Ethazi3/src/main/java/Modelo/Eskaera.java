@@ -6,6 +6,9 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak;
+
 public class Eskaera extends Operaciones{
 
 	private String helbidea;

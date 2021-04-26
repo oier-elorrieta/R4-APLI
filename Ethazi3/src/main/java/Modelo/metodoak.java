@@ -1,11 +1,13 @@
-package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.ImageIcon; 
+import javax.swing.ImageIcon;
+
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak; 
 
 public class metodoak {
 
@@ -108,14 +110,14 @@ public class metodoak {
 	}
 
 	// *****************************************************************************************************************************************************************************************************
-
+/*
 	public static double diruTotala(ArrayList<Karritoa> karroa) {
 		double diruTotala = 0;
 		for (int i = 0; i < karroa.size(); i++) {
 			diruTotala = diruTotala + karroa.get(i).getBalioa();
 		}
 		return diruTotala;
-	}
+	}*/
 
 	// *****************************************************************************************************************************************************************************************************
 

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak;
+
 public class metodoakTiene {
 
 	public static void sartuTiene(ArrayList<Karritoa> karroa, int numTrans, String erabiltzaile) throws ClassNotFoundException, SQLException {
@@ -17,6 +20,7 @@ public class metodoakTiene {
 			int kopurua = karroa.get(i).getKopuru();
 			double prezioa = karroa.get(i).getBalioa(); 
 			String operazioMota = jasoOperazioMota();
+			System.out.println(operazioMota);
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
 				gehituVende(elikagaia, erabiltzaile);
