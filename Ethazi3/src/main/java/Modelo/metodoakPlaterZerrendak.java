@@ -7,6 +7,9 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak;
+
 public class metodoakPlaterZerrendak {
 
 	public static String[] platerMotak() {

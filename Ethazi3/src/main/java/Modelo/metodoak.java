@@ -1,3 +1,4 @@
+package Modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -108,16 +109,6 @@ public class metodoak {
 		zbk++;
 		return zbk;
 	}
-
-	// *****************************************************************************************************************************************************************************************************
-/*
-	public static double diruTotala(ArrayList<Karritoa> karroa) {
-		double diruTotala = 0;
-		for (int i = 0; i < karroa.size(); i++) {
-			diruTotala = diruTotala + karroa.get(i).getBalioa();
-		}
-		return diruTotala;
-	}*/
 
 	// *****************************************************************************************************************************************************************************************************
 

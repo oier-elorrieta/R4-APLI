@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.junit.Test;
-import Modelo.BBDDKonexioa;
+import ModeloBBDD.BBDDKonexioa;
 import Modelo.metodoak;
 
 public class ModeloTestTransferentziaZbk {

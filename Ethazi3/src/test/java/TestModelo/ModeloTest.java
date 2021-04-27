@@ -179,32 +179,6 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void testDiruTotalak() {
-
-		Karritoa sidra = new Karritoa("Sidra", 0, 3);
-
-		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
-
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-		aukera.add(sidra);
-
-		int esperotakoa = 30;
-
-		assertEquals(esperotakoa, metodoak.diruTotala(aukera), 0);
-
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	@Test
 	public void testArgazkiaAukeratu() {
 
 		ImageIcon esperotakoa = new ImageIcon("argazkiak/Zukua.jpg");

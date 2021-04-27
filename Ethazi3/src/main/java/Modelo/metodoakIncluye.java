@@ -8,6 +8,9 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak;
+
 public class metodoakIncluye {
 
 	public static void incluye(int platerKodea, int kantitatea, double prezioa, String nif)

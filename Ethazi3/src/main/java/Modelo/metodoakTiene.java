@@ -20,7 +20,6 @@ public class metodoakTiene {
 			int kopurua = karroa.get(i).getKopuru();
 			double prezioa = karroa.get(i).getBalioa(); 
 			String operazioMota = jasoOperazioMota();
-			System.out.println(operazioMota);
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
 				gehituVende(elikagaia, erabiltzaile);

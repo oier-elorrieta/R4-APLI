@@ -8,6 +8,9 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.Kontsultak;
+
 public class Faktura extends Operaciones{
 
 	private String izena_hartzaile;
