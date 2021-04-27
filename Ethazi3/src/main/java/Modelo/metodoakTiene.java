@@ -83,9 +83,10 @@ public class metodoakTiene {
 	public static void gehituVende(String elikagaia, String erabiltzailea) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
-				Hornikuntza h1 = new Hornikuntza(0, 0, elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+				Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), metodoakFuntzioakDeitu.dirutotala(), elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
 				h1.sartuOperaciones();
 				h1.sartuHornikuntza(); 
+				h1.stockGehitu();
 			}
 		}
 	}

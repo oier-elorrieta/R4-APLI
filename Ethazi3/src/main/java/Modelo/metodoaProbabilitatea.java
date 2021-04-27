@@ -23,6 +23,5 @@ public class metodoaProbabilitatea {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
