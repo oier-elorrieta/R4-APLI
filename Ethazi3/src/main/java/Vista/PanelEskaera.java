@@ -184,6 +184,7 @@ public class PanelEskaera extends JPanel {
 				try {
 					controladorPanelEskaera.gordeEskaera(tf_Helbide.getText());
 					controladorPanelEskaera.sartuTiene();
+					controladorPanelEskaera.sartuprobabilitatea();
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				}if (controladorPanelEskaera.konprobatuLokala().equals("Restaurante")) {

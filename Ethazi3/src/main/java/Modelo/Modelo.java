@@ -170,6 +170,14 @@ public class Modelo {
 	public void ofrece() {
 		metodoakOfrece.localOfrece(konprobatuNIF());
 	}
+	
+	public void sartuprobabilitatea()  {
+		try {
+			metodoaProbabilitatea.sartuDatuak(usuarioa.getErabiltzailea());
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________

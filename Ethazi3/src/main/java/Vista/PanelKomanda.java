@@ -212,6 +212,7 @@ public class PanelKomanda extends JPanel {
 				try {
 					controladorPanelKomanda.sartuKomanda();
 					controladorPanelKomanda.sartuTiene();
+					controladorPanelKomanda.sartuprobabilitatea();
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

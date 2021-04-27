@@ -165,6 +165,7 @@ public class PanelTicket extends JPanel {
 				try {
 					controladorPanelTicket.gordeTicket();
 					controladorPanelTicket.sartuTiene();
+					controladorPanelTicket.sartuprobabilitatea();
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
