@@ -171,13 +171,13 @@ public class Modelo {
 		metodoakOfrece.localOfrece(konprobatuNIF());
 	}
 	
-	public void sartuprobabilitatea()  {
+	/*public void sartuprobabilitatea(String produktua)  {
 		try {
-			metodoaProbabilitatea.sartuDatuak(usuarioa.getErabiltzailea());
+			metodoaProbabilitatea.sartuDatuak(usuarioa.getErabiltzailea(), produktua);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________

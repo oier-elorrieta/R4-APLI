@@ -211,8 +211,7 @@ public class PanelFaktura extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelFaktura.sartuFaktura(tf_Izena.getText(),tf_Abizena.getText());
-					controladorPanelFaktura.sartuTiene();
-					controladorPanelFaktura.sartuprobabilitatea();
+					controladorPanelFaktura.sartuTiene(); 
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
 				} if (controladorPanelFaktura.konprobatuLokala().equals("Restaurante")) {

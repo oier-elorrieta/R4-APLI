@@ -23,6 +23,7 @@ public class metodoakTiene {
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
 				gehituVende(elikagaia, erabiltzaile);
+				metodoaProbabilitatea.sartuDatuak(erabiltzaile, elikagaia);
 			} else {
 				updateTiene(elikagaia, kopurua, prezioa, operazioMota);
 				gehituVende(elikagaia, erabiltzaile);
