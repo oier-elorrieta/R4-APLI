@@ -57,7 +57,7 @@ public class Hornikuntza extends Operaciones{
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea();
 		String query1 = (Kontsultak.insertHornikuntza + "(" + this.transferentziaZenbakia + ",'" + izenaFabrikantea + "')");
-		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + this.transferentziaZenbakia + "," + this.produktu_kantitatea + "," + this.totala+ ", '"+this.operazioMota+"')");
+		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + this.transferentziaZenbakia + "," + this.produktu_kantitatea + "," + this.totala + ", '"+this.operazioMota+"')");
 		try { 
 			Statement s;
 			s = konekzioa.createStatement();

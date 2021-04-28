@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import ModeloBBDD.BBDDKonexioa;
 import ModeloBBDD.Kontsultak;
 
@@ -22,11 +20,14 @@ public class metodoakTiene {
 			String operazioMota = jasoOperazioMota();
 			if (begiratuTiene(elikagaia, numTrans) == false) {
 				insertTiene(elikagaia, kopurua, prezioa, operazioMota);
+				updateOperaciones();
 				gehituVende(elikagaia, erabiltzaile);
 			} else {
 				updateTiene(elikagaia, kopurua, prezioa, operazioMota);
+				updateOperaciones();
 				gehituVende(elikagaia, erabiltzaile);
 			}
+			
 		}
 	}
 
@@ -82,12 +83,31 @@ public class metodoakTiene {
 	public static void gehituVende(String elikagaia, String erabiltzailea) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
-				Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), metodoakFuntzioakDeitu.dirutotala(), elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+				Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), produktuDirua(elikagaia), elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
 				h1.sartuOperaciones();
 				h1.sartuHornikuntza(); 
 				h1.stockGehitu();
 			}
 		}
+	}
+	
+	public static double produktuDirua(String elikagaia) {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		double totala = 0;
+		String query1 = (Kontsultak.selectProduktuSaltzekoPrezioa +"'" + elikagaia + "'");
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if(re.next()) {
+				totala = re.getDouble("Precio_Compra")*50;
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi operazio mota", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+		return totala;
 	}
 
 	public static String jasoOperazioMota () {
@@ -126,5 +146,37 @@ public class metodoakTiene {
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du produktu mota ikusi", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 		return produktuMota;
+	}
+	
+	public static void updateOperaciones() throws ClassNotFoundException, SQLException {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = (Kontsultak.updateOperaciones + dirutotala() + " where NumTrans = (select max(NumTrans) from tiene)");
+		try {
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1);
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du kalkulatu operazio totala", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public static double dirutotala() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		double diruTotala = 0;
+		String query1 = (Kontsultak.function);
+		try {
+			ResultSet re;
+			PreparedStatement p;
+			p = konekzioa.prepareStatement(query1);
+			re = p.executeQuery();
+			if (re.next()) {
+				diruTotala = re.getDouble("importeTotal()");
+			}
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du ikusi plater motak", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+		return diruTotala;
 	}
 }

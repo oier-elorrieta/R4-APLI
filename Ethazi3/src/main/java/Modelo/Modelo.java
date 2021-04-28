@@ -120,24 +120,24 @@ public class Modelo {
 	}
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), diruTotala(),konprobatuNIF());
+		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), 0,konprobatuNIF());
 		t1.sartuOperaciones();
 	}
 
 	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		Eskaera es1 = new Eskaera(metodoak.jasoTransakzioZbk(), diruTotala(), konprobatuNIF(), helbidea);
+		Eskaera es1 = new Eskaera(metodoak.jasoTransakzioZbk(), 0, konprobatuNIF(), helbidea);
 		es1.sartuOperaciones();
 		es1.sartuEskaera();
 	}
 
 	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		Faktura f1 = new Faktura(metodoak.jasoTransakzioZbk(), diruTotala(), konprobatuNIF(), izena, abizena);
+		Faktura f1 = new Faktura(metodoak.jasoTransakzioZbk(), 0, konprobatuNIF(), izena, abizena);
 		f1.sartuOperaciones();
 		f1.sartuFaktura();
 	} 
 
 	public void sartuHornikuntza(String produktua, String nif, int kantitatea) throws ClassNotFoundException, SQLException { 
-		Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), diruTotala(), produktua, nif, kantitatea);
+		Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), 0, produktua, nif, kantitatea);
 		h1.sartuOperaciones();
 		h1.sartuHornikuntza();
 		h1.stockGehitu();
