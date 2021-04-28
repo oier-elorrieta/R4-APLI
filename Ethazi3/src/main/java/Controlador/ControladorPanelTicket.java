@@ -85,4 +85,8 @@ public class ControladorPanelTicket {
 	public void sartuTiene() {
 		this.modelo.sartuTiene();
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4d7a1540bc12bc8e5c03d4126bd630c95511e7b1

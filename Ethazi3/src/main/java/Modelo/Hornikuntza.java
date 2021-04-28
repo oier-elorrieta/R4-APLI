@@ -56,10 +56,8 @@ public class Hornikuntza extends Operaciones{
 	public void sartuHornikuntza() throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String izenaFabrikantea = jasoHornikuntzarakoFabrikantea();
-		int numTrans = metodoak.jasoTransakzioZbk()-1; 
-		double dirua = metodoak.jasoProduktuenPrezioa(this.produktua, this.produktu_kantitatea); 
-		String query1 = (Kontsultak.insertHornikuntza + "(" + numTrans + ",'" + izenaFabrikantea + "')");
-		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + numTrans + "," + this.produktu_kantitatea + "," + dirua+ ", '"+this.operazioMota+"')");
+		String query1 = (Kontsultak.insertHornikuntza + "(" + this.transferentziaZenbakia + ",'" + izenaFabrikantea + "')");
+		String query2 = (Kontsultak.insertTiene+"('" + this.produktua + "'," + this.transferentziaZenbakia + "," + this.produktu_kantitatea + "," + this.totala+ ", '"+this.operazioMota+"')");
 		try { 
 			Statement s;
 			s = konekzioa.createStatement();
@@ -70,6 +68,19 @@ public class Hornikuntza extends Operaciones{
 		} catch (SQLException e) { 
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Datu baseak ezin du hornikuntza egin", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void stockGehitu() {
+		Connection konekzioa = BBDDKonexioa.getConexion();
+		String query1 = (Kontsultak.updateStock + "Stock + "+this.produktu_kantitatea+" where NIFLocal = '"+this.NIF+"' and NomProducto = '"+this.produktua+"'");
+		try { 
+			Statement s;
+			s = konekzioa.createStatement();
+			s.executeUpdate(query1); 
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Datu baseak ezin du stocka gehitu", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

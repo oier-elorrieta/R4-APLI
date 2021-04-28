@@ -1,8 +1,6 @@
 package TestModelo;
 
 import static org.junit.Assert.*;
-
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;

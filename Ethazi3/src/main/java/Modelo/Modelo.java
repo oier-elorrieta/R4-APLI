@@ -140,6 +140,7 @@ public class Modelo {
 		Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), diruTotala(), produktua, nif, kantitatea);
 		h1.sartuOperaciones();
 		h1.sartuHornikuntza();
+		h1.stockGehitu();
 	}
 
 	public void sartuTiene()  {

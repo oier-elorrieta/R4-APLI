@@ -80,5 +80,4 @@ public class ControladorPanelFaktura {
 	public void sartuTiene() {
 		this.modelo.sartuTiene();
 	}
-
 }
