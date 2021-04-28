@@ -85,8 +85,4 @@ public class ControladorPanelTicket {
 	public void sartuTiene() {
 		this.modelo.sartuTiene();
 	}
-	
-	public void sartuprobabilitatea() {
-		this.modelo.sartuprobabilitatea();
-	}
 }

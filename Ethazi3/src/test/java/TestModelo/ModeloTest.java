@@ -2,13 +2,13 @@ package TestModelo;
 
 import static org.junit.Assert.*;
 
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import org.junit.Test;
 import Modelo.Karritoa;
 import Modelo.Produktua;
-import Modelo.metodoaProbabilitatea;
 import Modelo.metodoak;
 import Modelo.metodoakPlaterrakEtaProduktuak;
 
@@ -199,41 +199,4 @@ public class ModeloTest {
 
 		assertEquals(esperotakoa, metodoak.jasoProduktuenPrezioa("Ardoa", 2), 0);
 	}
-	
-	// *****************************************************************************************************************************************************************************************************
-
-		@Test
-		public void testtablaposisioa() throws ClassNotFoundException, SQLException {
-
-			int[] insertrako = new int[23];
-
-			insertrako[0]=0;
-			insertrako[1]=0;
-			insertrako[2]=0;
-			insertrako[3]=0;
-			insertrako[4]=0;
-			insertrako[5]=0;
-			insertrako[6]=0;
-			insertrako[7]=0;
-			insertrako[8]=0;
-			insertrako[9]=0;
-			insertrako[10]=0;
-			insertrako[11]=0;
-			insertrako[12]=0;
-			insertrako[13]=0;
-			insertrako[14]=0;
-			insertrako[15]=0;
-			insertrako[16]=0;
-			insertrako[17]=0;
-			insertrako[18]=0;
-			insertrako[19]=0;
-			insertrako[20]=0;
-			insertrako[21]=0;
-			insertrako[22]=0;
-			
-			int[] esperotakoa=metodoaProbabilitatea.tablaposisioa();
-
-			assertEquals(esperotakoa, insertrako);
-
-		}
 }
