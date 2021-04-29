@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.junit.Test;
+
 import ModeloBBDD.BBDDKonexioa;
-import Modelo.metodoakPlaterZerrendak;
+import ModeloBBDD.metodoakPlaterZerrendak;
 
 public class ModeloTestPlaterZerrendak {
 

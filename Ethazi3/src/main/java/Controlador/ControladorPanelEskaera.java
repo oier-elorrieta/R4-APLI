@@ -8,7 +8,7 @@ import Modelo.Modelo;
 import Vista.PanelEskaera;
 import Vista.Vista;
 
-public class ControladorPanelEskaera {
+public class ControladorPanelEskaera implements ControladorNagusia{
 
 	private Modelo modelo;
 	private Vista vista;
@@ -25,17 +25,21 @@ public class ControladorPanelEskaera {
 		this.panelPedidos = new PanelEskaera(this);
 		this.vista.ikusiPanela(this.panelPedidos);
 	}
-
-	public String[] ComboBoxaSakatu() {
-		return this.modelo.produktuakJaso();
+	
+	public void sakatuAtzeraBotoia() {
+		ControladorNagusia.sakatuAtzeraBotoia(controlador, modelo);
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru);
-	} 
+	public String[] ComboBoxaSakatu() {
+		return ControladorNagusia.ComboBoxaSakatu(modelo);
+	}
+
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return ControladorNagusia.sartu(elikagaia, kopuru, modelo);
+	}  
 
 	public ImageIcon argazkiaAukeratu(String aukera) {
-		return this.modelo.argazkiaAukeratu(aukera);
+		return ControladorNagusia.argazkiaAukeratu(aukera, modelo);
 	}
 
 	public void gordeEskaera(String helbidea) throws ClassNotFoundException, SQLException {
@@ -43,42 +47,38 @@ public class ControladorPanelEskaera {
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
-		return this.modelo.jasoTransakzioZbk();
+		return ControladorNagusia.jasoTransakzioZbk(modelo);
 	}
 
 	public void sakatuPanelTabernaBotoia() {
-		this.controlador.nabegatzenPanelTaberna();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelTabernaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
-		this.controlador.nabegatzenPanelKafetegia();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelKafetegiaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
-		this.controlador.nabegatzenPanelJatetxea();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelJatetxeBotoia(controlador, modelo);
 	}
 
 	public String konprobatuLokala() {
-		return this.modelo.konprobatuLokala();
+		return ControladorNagusia.konprobatuLokala(modelo);
 	}
 	
 	public String konprobatuLokalarenIzena() {
-		return this.modelo.konprobatuLokalarenIzena();
+		return ControladorNagusia.konprobatuLokalarenIzena(modelo);
 	}
 	
 	public String konprobatuNIF() {
-		return this.modelo.konprobatuNIF();
-	}
-	
+		return ControladorNagusia.konprobatuNIF(modelo);
+	} 
+
 	public int begiratuStock(String produktua, String nif) {
-		return this.modelo.begiratuStock(produktua, nif);
+		return ControladorNagusia.begiratuStock(produktua, nif, modelo);
 	}
 	
 	public void sartuTiene() {
-		this.modelo.sartuTiene();
+		ControladorNagusia.sartuTiene(modelo);
 	}
 }
-

@@ -28,12 +28,11 @@ public class ControladorPanelKomanda {
 	}
 	
 	public void sakatuAtzeraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuAtzeraBotoia(controlador, modelo);
 	}
 	
 	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru); 
+		return ControladorNagusia.sartu(elikagaia, kopuru, modelo); 
 	}  
 
 	public ImageIcon argazkiaPlaterraAukeratu(String aukera) {
@@ -41,31 +40,29 @@ public class ControladorPanelKomanda {
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
-		return this.modelo.jasoTransakzioZbk();
+		return ControladorNagusia.jasoTransakzioZbk(modelo);
 	}
 
 	public void sakatuPanelTabernaBotoia() {
-		this.controlador.nabegatzenPanelTaberna();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelTabernaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
-		this.controlador.nabegatzenPanelKafetegia();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelKafetegiaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
-		this.controlador.nabegatzenPanelJatetxea();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelJatetxeBotoia(controlador, modelo);
 	}
 
 	public String konprobatuLokala() {
-		return this.modelo.konprobatuLokala();
+		return ControladorNagusia.konprobatuLokala(modelo);
 	}
 	
 	public String konprobatuLokalarenIzena() {
-		return this.modelo.konprobatuLokalarenIzena();
+		return ControladorNagusia.konprobatuLokalarenIzena(modelo);
 	}
+	
 	public String[] platerrakJaso() {
 		return this.modelo.platerrakJaso();
 	}
@@ -106,19 +103,20 @@ public class ControladorPanelKomanda {
 		this.modelo.ofrece();
 	}
 	
-	public String[] ComboBoxaSakatuProduktuak() {
-		return this.modelo.produktuakJaso();
+
+	public String[] ComboBoxaSakatu() {
+		return ControladorNagusia.ComboBoxaSakatu(modelo);
 	}
 
 	public String konprobatuNIF() {
-		return this.modelo.konprobatuNIF();
+		return ControladorNagusia.konprobatuNIF(modelo);
 	} 
-	
+
 	public int begiratuStock(String produktua, String nif) {
-		return this.modelo.begiratuStock(produktua, nif);
+		return ControladorNagusia.begiratuStock(produktua, nif, modelo);
 	}
 	
 	public void sartuTiene() {
-		this.modelo.sartuTiene();
+		ControladorNagusia.sartuTiene(modelo);
 	}
 }

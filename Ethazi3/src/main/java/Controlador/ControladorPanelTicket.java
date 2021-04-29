@@ -3,15 +3,15 @@ package Controlador;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import Modelo.Karritoa; 
-import Modelo.Modelo;  
+import Modelo.Karritoa;
+import Modelo.Modelo;
 import Vista.PanelTicket;
 import Vista.Vista;
 
-public class ControladorPanelTicket {
+public class ControladorPanelTicket implements ControladorNagusia{
 
 	private Modelo modelo;
-	private Vista vista;
+	private Vista vista; 
 	private Controlador controlador;
 	private PanelTicket panelTicket; 
 
@@ -27,20 +27,19 @@ public class ControladorPanelTicket {
 	}
 
 	public void sakatuAtzeraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuAtzeraBotoia(controlador, modelo);
 	}
 
 	public String[] ComboBoxaSakatu() {
-		return this.modelo.produktuakJaso();
+		return ControladorNagusia.ComboBoxaSakatu(modelo);
 	}
 
 	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return this.modelo.sartu(elikagaia, kopuru); 
+		return ControladorNagusia.sartu(elikagaia, kopuru, modelo);
 	}  
 
 	public ImageIcon argazkiaAukeratu(String aukera) {
-		return this.modelo.argazkiaAukeratu(aukera);
+		return ControladorNagusia.argazkiaAukeratu(aukera, modelo);
 	}
 
 	public void gordeTicket() throws ClassNotFoundException, SQLException {
@@ -48,42 +47,38 @@ public class ControladorPanelTicket {
 	}
 	
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
-		return this.modelo.jasoTransakzioZbk();
+		return ControladorNagusia.jasoTransakzioZbk(modelo);
 	}
 
 	public void sakatuPanelTabernaBotoia() {
-		this.controlador.nabegatzenPanelTaberna();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelTabernaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelKafetegiaBotoia() {
-		this.controlador.nabegatzenPanelKafetegia();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelKafetegiaBotoia(controlador, modelo);
 	}
 
 	public void sakatuPanelJatetxeBotoia() {
-		this.controlador.nabegatzenPanelJatetxea();
-		this.modelo.ezabatuProduktuenArraya();
+		ControladorNagusia.sakatuPanelJatetxeBotoia(controlador, modelo);
 	}
 
 	public String konprobatuLokala() {
-		return this.modelo.konprobatuLokala();
+		return ControladorNagusia.konprobatuLokala(modelo);
 	}
 	
 	public String konprobatuLokalarenIzena() {
-		return this.modelo.konprobatuLokalarenIzena();
+		return ControladorNagusia.konprobatuLokalarenIzena(modelo);
 	}
 	
 	public String konprobatuNIF() {
-		return this.modelo.konprobatuNIF();
+		return ControladorNagusia.konprobatuNIF(modelo);
 	} 
 
 	public int begiratuStock(String produktua, String nif) {
-		return this.modelo.begiratuStock(produktua, nif);
+		return ControladorNagusia.begiratuStock(produktua, nif, modelo);
 	}
 	
 	public void sartuTiene() {
-		this.modelo.sartuTiene();
+		ControladorNagusia.sartuTiene(modelo);
 	}
 }
-

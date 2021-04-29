@@ -73,7 +73,7 @@ public class PanelFaktura extends JPanel {
 		tf_Titulua.setEditable(false);
 		add(tf_Titulua);
 
-		tf_Lokala = new JTextField(controladorPanelFaktura.komprobatuLokalarenIzena());
+		tf_Lokala = new JTextField(controladorPanelFaktura.konprobatuLokalarenIzena());
 		tf_Lokala.setFont(new Font("Tahoma", Font.ITALIC, 9));
 		tf_Lokala.setHorizontalAlignment(SwingConstants.CENTER);
 		tf_Lokala.setBounds(61, 36, 75, 20);

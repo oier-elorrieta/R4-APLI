@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.junit.Test;
 import ModeloBBDD.BBDDKonexioa;
-import Modelo.metodoakKonprobaketak;
+import ModeloBBDD.metodoakKonprobaketak;
 
 public class ModeloTestKonprobaketakLokala {
 

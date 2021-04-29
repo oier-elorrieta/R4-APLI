@@ -175,7 +175,7 @@ public class PanelKomanda extends JPanel {
 		cb_Produktoak.setBounds(30, 118, 214, 20);
 		add(cb_Produktoak);
 
-		produktuak = controladorPanelKomanda.ComboBoxaSakatuProduktuak();
+		produktuak = controladorPanelKomanda.ComboBoxaSakatu();
 		for (int i = 0; i < produktuak.length; i++) {
 			cb_Produktoak.addItem(produktuak[i]);
 		}

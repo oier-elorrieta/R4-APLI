@@ -87,7 +87,4 @@ public class Produktua {
 		return "Produktua [izena=" + izena + ", mota=" + mota + ", data=" + data + ", erosPrezioa=" + erosPrezioa
 				+ ", saltzekoPrezioa=" + saltzekoPrezioa + ", fabrikantea=" + fabrikantea + "]";
 	}
-	
-	
-
 }

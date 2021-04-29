@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 import ModeloBBDD.BBDDKonexioa;
 import ModeloBBDD.Kontsultak;
+import ModeloBBDD.metodoakKonprobaketak;  
 
 public class metodoakTiene {
 
@@ -33,7 +35,7 @@ public class metodoakTiene {
 
 	public static void insertTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException {
 		Connection konekzioa = BBDDKonexioa.getConexion();  
-		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (metodoak.jasoTransakzioZbk() - 1) + ", " + kopurua
+		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk() - 1) + ", " + kopurua
 				+ ", " + prezioa + ", '"+ operazioMota +"')");
 		try {
 			Statement s;
@@ -68,7 +70,7 @@ public class metodoakTiene {
 	public static void updateTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException { 
 		Connection konekzioa = BBDDKonexioa.getConexion();
 		String query1 = (Kontsultak.updateTiene+"N_Unidades + " + kopurua + ", Precio = Precio + " + prezioa
-				+ " where NomProducto = '" + elikagaia + "' and NumTrans = "+(metodoak.jasoTransakzioZbk()-1)+"");
+				+ " where NomProducto = '" + elikagaia + "' and NumTrans = "+(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk()-1)+"");
 		try {
 			Statement s;
 			s = konekzioa.createStatement();
@@ -83,10 +85,10 @@ public class metodoakTiene {
 	public static void gehituVende(String elikagaia, String erabiltzailea) throws ClassNotFoundException, SQLException {
 		if(!begiratuProduktuMota(elikagaia).equals("Plato")) {
 			if (metodoakKonprobaketak.begiratuStock(elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea)) < 5) {
-				Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), produktuDirua(elikagaia), elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
-				h1.sartuOperaciones();
-				h1.sartuHornikuntza(); 
-				h1.stockGehitu();
+				Hornikuntza h1 = new Hornikuntza(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk(), produktuDirua(elikagaia), elikagaia, metodoakKonprobaketak.konprobatuNIF(erabiltzailea), 50);
+				ModeloBBDD.metodoakOperaciones.sartuOperaciones(h1.getTransferentziaZenbakia(), h1.getTotala(), h1.getNIF(), h1.getOperazioMota());
+				ModeloBBDD.metodoakHornikuntza.sartuHornikuntza(h1.getTransferentziaZenbakia(), h1.getProduktua(), h1.getProduktu_kantitatea(), h1.getTotala(), h1.getOperazioMota());
+				ModeloBBDD.metodoakHornikuntza.stockGehitu(h1.getProduktua(), h1.getProduktu_kantitatea(), h1.getNIF());
 			}
 		}
 	}
@@ -179,4 +181,4 @@ public class metodoakTiene {
 		}
 		return diruTotala;
 	}
-}
+} 

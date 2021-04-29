@@ -3,9 +3,10 @@ package TestModelo;
 import static org.junit.Assert.assertFalse;
 import java.sql.SQLException;
 import org.junit.Test;
-import Modelo.metodoakIncluye;
-import Modelo.metodoakOfrece;
+
 import Modelo.metodoakTiene;
+import ModeloBBDD.metodoakIncluye;
+import ModeloBBDD.metodoakOfrece;
 
 public class ModeloTestKonprobaketakTaulak {
 

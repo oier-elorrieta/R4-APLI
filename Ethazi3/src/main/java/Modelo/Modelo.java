@@ -4,6 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
+import ModeloBBDD.metodoJasoTransakzioZbk;
+import ModeloBBDD.metodoakFuntzioakDeitu;
+import ModeloBBDD.metodoakIncluye;
+import ModeloBBDD.metodoakKonprobaketak;
+import ModeloBBDD.metodoakOfrece;
+import ModeloBBDD.metodoakPlaterZerrendak; 
+
 public class Modelo {
 
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
@@ -13,7 +20,7 @@ public class Modelo {
 	// *****************************************************************************************************************************************************************
 
 	public boolean konprobatuErabiltzaileAtributuenLuzeera(String nan, String izena, String abizena, String pasahitza, String nif) {
-		return metodoakKonprobaketak.konprobatuErabiltzaileAtributuenLuzeera(nan, izena, abizena, pasahitza, nif);
+		return ModeloBBDD.metodoakKonprobaketak.konprobatuErabiltzaileAtributuenLuzeera(nan, izena, abizena, pasahitza, nif);
 	}
 
 	public String[] produktuakJaso() {
@@ -105,42 +112,48 @@ public class Modelo {
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
 	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
-		return metodoak.jasoTransakzioZbk();
+		return ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk();
 	}
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
+	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza, Erabiltzaile usuarioa) {
+		usuarioa.setErabiltzailea(erabiltzailea);
+		usuarioa.setPasahitza(pasahitza);
+		return usuarioa;
+	}	
+	
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) {
-		usuarioa.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
+		ModeloBBDD.metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
 	}
 
 	public Erabiltzaile sartuErabiltzailea(String erabiltzailea, String pasahitza) {
-		return usuarioa.sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
+		return sartuErabiltzailea(erabiltzailea, pasahitza,usuarioa);
 	}
 
 	public void sartuTicket() throws ClassNotFoundException, SQLException {
-		Ticket t1 = new Ticket(metodoak.jasoTransakzioZbk(), 0,konprobatuNIF());
-		t1.sartuOperaciones();
+		Ticket t1 = new Ticket(metodoJasoTransakzioZbk.jasoTransakzioZbk(), 0,konprobatuNIF());
+		ModeloBBDD.metodoakOperaciones.sartuOperaciones(t1.getTransferentziaZenbakia(), t1.getTotala(), t1.getNIF(), t1.getOperazioMota());
 	}
 
 	public void sartuEskaera(String helbidea) throws ClassNotFoundException, SQLException {
-		Eskaera es1 = new Eskaera(metodoak.jasoTransakzioZbk(), 0, konprobatuNIF(), helbidea);
-		es1.sartuOperaciones();
-		es1.sartuEskaera();
+		Eskaera es1 = new Eskaera(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk(), 0, konprobatuNIF(), helbidea);
+		ModeloBBDD.metodoakOperaciones.sartuOperaciones(es1.getTransferentziaZenbakia(), es1.getTotala(), es1.getNIF(), es1.getOperazioMota());
+		ModeloBBDD.metodoakEskaera.sartuEskaera(es1.getTransferentziaZenbakia(), es1.getHelbidea());
 	}
 
 	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
-		Faktura f1 = new Faktura(metodoak.jasoTransakzioZbk(), 0, konprobatuNIF(), izena, abizena);
-		f1.sartuOperaciones();
-		f1.sartuFaktura();
+		Faktura f1 = new Faktura(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk(), 0, konprobatuNIF(), izena, abizena);
+		ModeloBBDD.metodoakOperaciones.sartuOperaciones(f1.getTransferentziaZenbakia(), f1.getTotala(), f1.getNIF(), f1.getOperazioMota());
+		ModeloBBDD.metodoakFaktura.sartuFaktura(f1.getTransferentziaZenbakia(), f1.getNIF(), f1.getIzena_hartzaile(), f1.getAbizena_hartzaile());
 	} 
 
 	public void sartuHornikuntza(String produktua, String nif, int kantitatea) throws ClassNotFoundException, SQLException { 
-		Hornikuntza h1 = new Hornikuntza(metodoak.jasoTransakzioZbk(), 0, produktua, nif, kantitatea);
-		h1.sartuOperaciones();
-		h1.sartuHornikuntza();
-		h1.stockGehitu();
+		Hornikuntza h1 = new Hornikuntza(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk(), 0, produktua, nif, kantitatea);
+		ModeloBBDD.metodoakOperaciones.sartuOperaciones(h1.getTransferentziaZenbakia(), h1.getTotala(), h1.getNIF(), h1.getOperazioMota());
+		ModeloBBDD.metodoakHornikuntza.sartuHornikuntza(h1.getTransferentziaZenbakia(), h1.getProduktua(), h1.getProduktu_kantitatea(), h1.getTotala(), h1.getOperazioMota());
+		ModeloBBDD.metodoakHornikuntza.stockGehitu(h1.getProduktua(), h1.getProduktu_kantitatea(), h1.getNIF());
 	}
 
 	public void sartuTiene()  {
@@ -155,7 +168,7 @@ public class Modelo {
 		Komanda k1 = new Komanda(0, 0, null); 
 		k1.setNIF(konprobatuNIF());
 		k1.setTotala(diruTotala());
-		k1.sartuKomanda();
+		ModeloBBDD.metodoakKomanda.sartuKomanda(k1.getNIF(), k1.getTotala());
 	} 
 
 	public void incluye(int platerKodea, int kantitatea) throws ClassNotFoundException, SQLException{
@@ -163,8 +176,8 @@ public class Modelo {
 	}
 
 	public Komanda hasieratuOperaciones() throws ClassNotFoundException, SQLException {
-		Komanda k1 = new Komanda(metodoak.jasoTransakzioZbk(), 0, null);
-		k1.hasieratuOperaciones();
+		Komanda k1 = new Komanda(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk(), 0, null);
+		ModeloBBDD.metodoakKomanda.hasieratuOperaciones(k1.getTransferentziaZenbakia());
 		return k1;
 	}
 
@@ -177,6 +190,6 @@ public class Modelo {
 
 	public void ezabatuKomanda() throws ClassNotFoundException, SQLException {
 		Komanda k1 = hasieratuOperaciones();
-		k1.ezabatuKomanda();
+		ModeloBBDD.metodoakKomanda.ezabatuKomanda(k1.getTransferentziaZenbakia());
 	}
 }

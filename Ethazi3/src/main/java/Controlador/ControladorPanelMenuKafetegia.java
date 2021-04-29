@@ -3,7 +3,7 @@ package Controlador;
 import Vista.PanelMenuKafetegia;
 import Vista.Vista;
 
-public class ControladorPanelMenuKafetegia {
+public class ControladorPanelMenuKafetegia implements ControladorNagusia{
 
 	private Vista vista;
 	private Controlador controlador;
@@ -20,26 +20,26 @@ public class ControladorPanelMenuKafetegia {
 	}
 
 	public void sakatuFakturaPanelaIkustekoBotoia() {
-		this.controlador.nabegatzenPanelFaktura();
+		ControladorNagusia.sakatuFakturaPanelaIkustekoBotoia(controlador);
 	}
 
 	public void sakatuTicketPanelaIkustekoBotoia() {
-		this.controlador.nabegatzenPanelTicket();
+		ControladorNagusia.sakatuTicketPanelaIkustekoBotoia(controlador);
 	}
 
 	public void sakatuEskaeraPanelaIkustekoBotoia() {
-		this.controlador.nabegatzenPanelPedidos();
+		ControladorNagusia.sakatuEskaeraPanelaIkustekoBotoia(controlador);
 	}
 
 	public void sakatuHasieraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
+		ControladorNagusia.sakatuHasieraBotoia(controlador);
 	}
 
 	public void sakatuHornikuntzaBotoia() {
-		this.controlador.nabegatzenPanelHornikuntza();
+		ControladorNagusia.sakatuHornikuntzaBotoia(controlador);
 	}
 
 	public void sakatuAtzeraBotoia() {
-		this.controlador.itxi();
+		ControladorNagusia.sakatuAtzeraBotoia(controlador);
 	} 
 }

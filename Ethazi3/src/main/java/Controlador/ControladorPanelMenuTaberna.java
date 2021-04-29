@@ -20,22 +20,22 @@ public class ControladorPanelMenuTaberna {
 	}
 
 	public void sakatuFakturaPanelaIkustekoBotoia() {
-		this.controlador.nabegatzenPanelFaktura();
+		ControladorNagusia.sakatuFakturaPanelaIkustekoBotoia(controlador);
 	}
 
 	public void sakatuTicketPanelaIkustekoBotoia() {
-		this.controlador.nabegatzenPanelTicket();
-	}
+		ControladorNagusia.sakatuTicketPanelaIkustekoBotoia(controlador);
+	} 
 
 	public void sakatuHasieraBotoia() {
-		this.controlador.nabegatzenPanelLogin();
+		ControladorNagusia.sakatuHasieraBotoia(controlador);
 	}
 
 	public void sakatuHornikuntzaBotoia() {
-		this.controlador.nabegatzenPanelHornikuntza();
+		ControladorNagusia.sakatuHornikuntzaBotoia(controlador);
 	}
 
 	public void sakatuAtzeraBotoia() {
-		this.controlador.itxi();
-	}
+		ControladorNagusia.sakatuAtzeraBotoia(controlador);
+	} 
 }

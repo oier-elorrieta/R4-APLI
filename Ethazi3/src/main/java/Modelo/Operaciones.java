@@ -1,14 +1,5 @@
 package Modelo;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.swing.JOptionPane;
-
-import ModeloBBDD.BBDDKonexioa;
-import ModeloBBDD.Kontsultak;
-
 public abstract class Operaciones {
 
 	protected int transferentziaZenbakia;
@@ -54,17 +45,4 @@ public abstract class Operaciones {
 	public void setOperazioMota(char operazioMota) {
 		this.operazioMota = operazioMota;
 	}
-
-	public void sartuOperaciones() {
-		Connection konekzioa = BBDDKonexioa.getConexion(); 
-		String query1 = (Kontsultak.insertOperaciones + "('" + this.transferentziaZenbakia + "' ,'" + this.totala + "','" + this.NIF + "', '"+ this.operazioMota +"')");
-		try {
-			Statement s;
-			s = konekzioa.createStatement();
-			s.executeUpdate(query1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Datu baseak ezin du sartu ticketa", "ERROR", JOptionPane.ERROR_MESSAGE);
-		}
-	};
 }

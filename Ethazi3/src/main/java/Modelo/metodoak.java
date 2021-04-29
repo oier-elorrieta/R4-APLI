@@ -1,14 +1,6 @@
-package Modelo;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package Modelo; 
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
-
-import ModeloBBDD.BBDDKonexioa;
-import ModeloBBDD.Kontsultak; 
+import javax.swing.ImageIcon;  
 
 public class metodoak {
 
@@ -121,31 +113,5 @@ public class metodoak {
 
 	public static ImageIcon argazkiaAukeratu(String aukera) {
 		return new ImageIcon("argazkiak/" + aukera + ".jpg");
-	}
-
-	// ______________________________________________________________________________________________________________________________________________________________________________________________________
-	// ______________________________________________________________________________________________________________________________________________________________________________________________________
-
-	public static int jasoTransakzioZbk() throws SQLException, ClassNotFoundException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
-		String query1 = (Kontsultak.selectMaxNumTrans);
-		int TransakzioZbk = 0;
-		try {
-			ResultSet re;
-			PreparedStatement p;
-			p = konekzioa.prepareStatement(query1);
-			re = p.executeQuery();
-			if (re.next()) {
-				if (re.getInt("max(NumTrans)") == 0) {
-					TransakzioZbk = 1;
-				} else {
-					TransakzioZbk = re.getInt("max(NumTrans)");
-					TransakzioZbk++;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return TransakzioZbk;
-	}
+	} 
 }
