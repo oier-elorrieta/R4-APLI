@@ -18,6 +18,10 @@ public abstract class ControladorNagusia {
 		this.modelo = modelo;
 		this.vista = vista;
 	}
+	
+	public void sakatuPanelLogin() {
+		this.controlador.nabegatzenPanelLogin();
+	}
 
 	public void sakatuFakturaPanelaIkustekoBotoia() {
 		this.controlador.nabegatzenPanelFaktura();
@@ -25,6 +29,10 @@ public abstract class ControladorNagusia {
 
 	public void sakatuTicketPanelaIkustekoBotoia() {
 		this.controlador.nabegatzenPanelTicket();
+	}
+	
+	public void hasieraraBotoia() {
+		this.controlador.nabegatzenPanelHasiera();
 	}
 
 	public void sakatuHasieraBotoia() {

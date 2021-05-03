@@ -153,9 +153,9 @@ public class PanelErregistratu extends JPanel {
 							e.printStackTrace();
 						}	
 					}		
-					controladorPanelErregistratu.sakatuErregistratuBotoia();
+					controladorPanelErregistratu.sakatuPanelLogin();
 				}else {
-					controladorPanelErregistratu.sakatuErregistratuBotoia();
+					controladorPanelErregistratu.sakatuPanelLogin();
 				} 
 			}
 		};
@@ -166,8 +166,7 @@ public class PanelErregistratu extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelErregistratu controladorPanelErregistratu) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelErregistratu.sakatuSarratuBotoia();
-			}
+				controladorPanelErregistratu.sakatuItxiBotoia();			}
 		};
 	} 
 

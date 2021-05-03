@@ -128,7 +128,7 @@ public class PanelLogin extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelLogin controladorPanelLogin) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelLogin.sakatuAtzeraBotoia();
+				controladorPanelLogin.hasieraraBotoia();
 			}
 		};
 	}

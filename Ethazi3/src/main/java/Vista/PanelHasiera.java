@@ -88,7 +88,7 @@ public class PanelHasiera extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelHasiera controladorPanelHasiera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelHasiera.itxi();
+				controladorPanelHasiera.sakatuItxiBotoia();
 			}
 		};
 	} 
