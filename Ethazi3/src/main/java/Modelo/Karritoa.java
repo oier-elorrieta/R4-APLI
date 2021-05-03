@@ -35,9 +35,4 @@ public class Karritoa {
 	public void setBalioa(double balioa) {
 		this.balioa = balioa;
 	}
-
-	@Override
-	public String toString() {
-		return "Karritoa [elikagaia=" + elikagaia + ", kopuru=" + kopuru + ", balioa=" + balioa + "]";
-	}
 }
