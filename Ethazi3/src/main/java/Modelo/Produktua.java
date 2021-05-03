@@ -80,11 +80,4 @@ public class Produktua {
 	public void setFabrikantea(String fabrikantea) {
 		this.fabrikantea = fabrikantea;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Produktua [izena=" + izena + ", mota=" + mota + ", data=" + data + ", erosPrezioa=" + erosPrezioa
-				+ ", saltzekoPrezioa=" + saltzekoPrezioa + ", fabrikantea=" + fabrikantea + "]";
-	}
 }

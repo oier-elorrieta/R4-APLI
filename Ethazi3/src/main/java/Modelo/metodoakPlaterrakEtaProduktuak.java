@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import ModeloBBDD.BBDDKonexioa;
 import ModeloBBDD.Kontsultak;
 
+
+
 public class metodoakPlaterrakEtaProduktuak {
 
 	public static int produktuKantitatea() {
