@@ -4,92 +4,102 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa;
-import Modelo.Modelo; 
+import Modelo.Modelo;
+import Vista.Vista; ; 
 
-public interface ControladorNagusia { 	
+public abstract class ControladorNagusia { 	
 	
-	public static void sakatuFakturaPanelaIkustekoBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelFaktura();
+	protected Controlador controlador;
+	protected Modelo modelo;
+	protected Vista vista;
+
+	public ControladorNagusia(Controlador controlador, Modelo modelo, Vista vista) {
+		this.controlador = controlador;
+		this.modelo = modelo;
+		this.vista = vista;
 	}
 
-	public static void sakatuTicketPanelaIkustekoBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelTicket();
+	public void sakatuFakturaPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelFaktura();
 	}
 
-	public static void sakatuHasieraBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelLogin();
+	public void sakatuTicketPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelTicket();
 	}
 
-	public static void sakatuHornikuntzaBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelHornikuntza();
-	}
-	
-	public static void sakatuKomandaPanelaIkustekoBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelKomanda();
-	}
-	
-	public static void sakatuEskaeraPanelaIkustekoBotoia(Controlador controlador) {
-		controlador.nabegatzenPanelPedidos();
+	public void sakatuHasieraBotoia() {
+		this.controlador.nabegatzenPanelLogin();
 	}
 
-	public static void sakatuAtzeraBotoia(Controlador controlador) {
-		controlador.itxi();
-	}
-	
-	
-	public static void sakatuAtzeraBotoia(Controlador controlador, Modelo modelo) {
-		controlador.nabegatzenPanelLogin();
-		modelo.ezabatuProduktuenArraya();
+	public void sakatuHornikuntzaBotoia() {
+		this.controlador.nabegatzenPanelHornikuntza();
 	}
 
-	public static String[] ComboBoxaSakatu(Modelo modelo) {
-		return modelo.produktuakJaso();
+	public void sakatuKomandaPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelKomanda();
 	}
 
-	public static ArrayList<Karritoa> sartu(String elikagaia,int kopuru, Modelo modelo) {
-		return modelo.sartu(elikagaia, kopuru); 
+	public void sakatuEskaeraPanelaIkustekoBotoia() {
+		this.controlador.nabegatzenPanelPedidos();
+	}
+
+	public void sakatuItxiBotoia() {
+		this.controlador.itxi();
+	}
+
+	public void sakatuAtzeraBotoia() {
+		this.controlador.nabegatzenPanelLogin();
+		this.modelo.ezabatuProduktuenArraya();
+	}
+
+	public String[] ComboBoxaSakatu() {
+		return this.modelo.produktuakJaso();
+	}
+
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
 
-	public static ImageIcon argazkiaAukeratu(String aukera, Modelo modelo) {
-		return modelo.argazkiaAukeratu(aukera);
-	}
-	
-	public static int jasoTransakzioZbk(Modelo modelo) throws ClassNotFoundException, SQLException {
-		return modelo.jasoTransakzioZbk();
+	public ImageIcon argazkiaAukeratu(String aukera ) {
+		return this.modelo.argazkiaAukeratu(aukera);
 	}
 
-	public static void sakatuPanelTabernaBotoia(Controlador controlador, Modelo modelo) {
-		controlador.nabegatzenPanelTaberna();
-		modelo.ezabatuProduktuenArraya();
+	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
+		return this.modelo.jasoTransakzioZbk();
 	}
 
-	public static void sakatuPanelKafetegiaBotoia(Controlador controlador, Modelo modelo) {
-		controlador.nabegatzenPanelKafetegia();
-		modelo.ezabatuProduktuenArraya();
+	public void sakatuPanelTabernaBotoia() {
+		this.controlador.nabegatzenPanelTaberna();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
-	public static void sakatuPanelJatetxeBotoia(Controlador controlador,Modelo modelo) {
-		controlador.nabegatzenPanelJatetxea();
-		modelo.ezabatuProduktuenArraya();
+	public void sakatuPanelKafetegiaBotoia() {
+		this.controlador.nabegatzenPanelKafetegia();
+		this.modelo.ezabatuProduktuenArraya();
 	}
 
-	public static String konprobatuLokala(Modelo modelo) {
-		return modelo.konprobatuLokala();
+	public void sakatuPanelJatetxeBotoia() {
+		this.controlador.nabegatzenPanelJatetxea();
+		this.modelo.ezabatuProduktuenArraya();
 	}
-	
-	public static String konprobatuLokalarenIzena(Modelo modelo) {
-		return modelo.konprobatuLokalarenIzena();
+
+	public String konprobatuLokala() {
+		return this.modelo.konprobatuLokala();
 	}
-	
-	public static String konprobatuNIF(Modelo modelo) {
-		return modelo.konprobatuNIF();
+
+	public String konprobatuLokalarenIzena() {
+		return this.modelo.konprobatuLokalarenIzena();
+	}
+
+	public String konprobatuNIF() {
+		return this.modelo.konprobatuNIF();
 	} 
 
-	public static int begiratuStock(String produktua, String nif,Modelo modelo) {
-		return modelo.begiratuStock(produktua, nif);
+	public int begiratuStock(String produktua, String nif) {
+		return this.modelo.begiratuStock(produktua, nif);
 	}
-	
-	public static void sartuTiene(Modelo modelo) {
-		modelo.sartuTiene();
+
+	public void sartuTiene() {
+		this.modelo.sartuTiene();
 	}
 }

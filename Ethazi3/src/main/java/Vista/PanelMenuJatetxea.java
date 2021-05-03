@@ -129,7 +129,7 @@ public class PanelMenuJatetxea extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelJatetxea.sakatuAtzeraBotoia();
+				controladorPanelJatetxea.sakatuItxiBotoia();
 			}
 		};
 	}

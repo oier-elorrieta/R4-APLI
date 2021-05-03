@@ -1,25 +1,23 @@
 package Controlador;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
-
-import Modelo.Karritoa;
+import java.sql.SQLException; 
 import Modelo.Modelo;
 import Vista.PanelFaktura; 
 import Vista.Vista;
 
-public class ControladorPanelFaktura {
-	
+public class ControladorPanelFaktura extends ControladorNagusia {
+
 	private Modelo modelo;
 	private Vista vista;
+	@SuppressWarnings("unused")
 	private Controlador controlador;
 	private PanelFaktura panelFaktura;
 
-	public ControladorPanelFaktura(Modelo modelo, Vista vista, Controlador controlador) {
+	public ControladorPanelFaktura(Controlador controlador, Modelo modelo, Vista vista) {
+		super(controlador, modelo, vista);
 		this.modelo = modelo;
 		this.vista = vista;
-		this.controlador = controlador;	
+		this.controlador = controlador;
 	}
 
 	public void ikusiPanelFaktura() {
@@ -27,59 +25,7 @@ public class ControladorPanelFaktura {
 		this.vista.ikusiPanela(this.panelFaktura);
 	}
 
-	public void sakatuAtzeraBotoia() {
-		ControladorNagusia.sakatuAtzeraBotoia(controlador, modelo);
-	}
-
-	public String[] ComboBoxaSakatu() {
-		return ControladorNagusia.ComboBoxaSakatu(modelo);
-	}
-
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
-		return ControladorNagusia.sartu(elikagaia, kopuru, modelo);
-	}  
-
-	public ImageIcon argazkiaAukeratu(String aukera) {
-		return ControladorNagusia.argazkiaAukeratu(aukera, modelo);
-	}
-
 	public void sartuFaktura(String izena, String abizena) throws ClassNotFoundException, SQLException {
 		this.modelo.sartuFaktura(izena, abizena);
 	} 
-	
-	public int jasoTransakzioZbk() throws ClassNotFoundException, SQLException {
-		return ControladorNagusia.jasoTransakzioZbk(modelo);
-	}
-
-	public void sakatuPanelTabernaBotoia() {
-		ControladorNagusia.sakatuPanelTabernaBotoia(controlador, modelo);
-	}
-
-	public void sakatuPanelKafetegiaBotoia() {
-		ControladorNagusia.sakatuPanelKafetegiaBotoia(controlador, modelo);
-	}
-
-	public void sakatuPanelJatetxeBotoia() {
-		ControladorNagusia.sakatuPanelJatetxeBotoia(controlador, modelo);
-	}
-
-	public String konprobatuLokala() {
-		return ControladorNagusia.konprobatuLokala(modelo);
-	}
-	
-	public String konprobatuLokalarenIzena() {
-		return ControladorNagusia.konprobatuLokalarenIzena(modelo);
-	}
-	
-	public String konprobatuNIF() {
-		return ControladorNagusia.konprobatuNIF(modelo);
-	} 
-
-	public int begiratuStock(String produktua, String nif) {
-		return ControladorNagusia.begiratuStock(produktua, nif, modelo);
-	}
-	
-	public void sartuTiene() {
-		ControladorNagusia.sartuTiene(modelo);
-	}
 }

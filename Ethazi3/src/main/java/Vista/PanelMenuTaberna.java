@@ -102,7 +102,7 @@ public class PanelMenuTaberna extends JPanel {
 	private ActionListener listenerSarratuBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controladorPanelMenuTaberna.sakatuAtzeraBotoia();
+				controladorPanelMenuTaberna.sakatuItxiBotoia();
 			}
 		};
 	}

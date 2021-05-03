@@ -1,45 +1,27 @@
 package Controlador;
 
+import Modelo.Modelo;
 import Vista.PanelMenuKafetegia;
 import Vista.Vista;
 
-public class ControladorPanelMenuKafetegia implements ControladorNagusia{
+public class ControladorPanelMenuKafetegia extends ControladorNagusia{
 
-	private Vista vista;
+	private Vista vista; 
+	@SuppressWarnings("unused")
 	private Controlador controlador;
+	@SuppressWarnings("unused")
+	private Modelo modelo;
 	private PanelMenuKafetegia panelMenuKafetegia; 
 
-	public ControladorPanelMenuKafetegia(Vista vista, Controlador controlador) {
+	public ControladorPanelMenuKafetegia(Controlador controlador, Modelo modelo, Vista vista) {
+		super(controlador, modelo, vista);
 		this.vista = vista;
-		this.controlador = controlador;	 
+		this.controlador = controlador;
+		this.vista = vista;
 	}
 
 	public void ikusipanelMenuKafetegia() {
 		this.panelMenuKafetegia = new PanelMenuKafetegia(this);
 		this.vista.ikusiPanela(this.panelMenuKafetegia);
 	}
-
-	public void sakatuFakturaPanelaIkustekoBotoia() {
-		ControladorNagusia.sakatuFakturaPanelaIkustekoBotoia(controlador);
-	}
-
-	public void sakatuTicketPanelaIkustekoBotoia() {
-		ControladorNagusia.sakatuTicketPanelaIkustekoBotoia(controlador);
-	}
-
-	public void sakatuEskaeraPanelaIkustekoBotoia() {
-		ControladorNagusia.sakatuEskaeraPanelaIkustekoBotoia(controlador);
-	}
-
-	public void sakatuHasieraBotoia() {
-		ControladorNagusia.sakatuHasieraBotoia(controlador);
-	}
-
-	public void sakatuHornikuntzaBotoia() {
-		ControladorNagusia.sakatuHornikuntzaBotoia(controlador);
-	}
-
-	public void sakatuAtzeraBotoia() {
-		ControladorNagusia.sakatuAtzeraBotoia(controlador);
-	} 
 }

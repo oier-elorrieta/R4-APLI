@@ -27,14 +27,14 @@ public class Controlador {
 		this.controladorPanelHasiera = new ControladorPanelHasiera(this.vista, this);
 		this.controladorPanelLogin = new ControladorPanelLogin(this.vista, this, this.modelo);
 		this.controladorPanelErregistratu = new ControladorPanelErregistratu(this.vista, this, this.modelo);
-		this.controladorPanelJatetxea = new ControladorPanelMenuJatetxea(this.vista, this);
-		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this.vista, this);
-		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this.vista, this);
-		this.controladorPanelFaktura = new ControladorPanelFaktura(this.modelo, this.vista, this);
-		this.controladorPanelHornikuntza = new ControladorPanelHornikuntza(this.vista, this, this.modelo);
-		this.controladorPanelTicket = new ControladorPanelTicket(this.modelo, this.vista, this);
-		this.controladorPanelPedidos = new ControladorPanelEskaera(this.modelo, this.vista, this); 
-		this.controladorPanelKomanda = new ControladorPanelKomanda(this.modelo, this.vista, this);
+		this.controladorPanelJatetxea = new ControladorPanelMenuJatetxea(this, this.modelo, this.vista);
+		this.controladorPanelTaberna = new ControladorPanelMenuTaberna(this, modelo, this.vista);
+		this.controladorPanelKafetegia = new ControladorPanelMenuKafetegia(this, modelo, this.vista);
+		this.controladorPanelFaktura = new ControladorPanelFaktura(this, this.modelo, this.vista);
+		this.controladorPanelHornikuntza = new ControladorPanelHornikuntza(this, this.vista, this.modelo);
+		this.controladorPanelTicket = new ControladorPanelTicket(this, this.modelo, this.vista);
+		this.controladorPanelPedidos = new ControladorPanelEskaera(this, this.modelo, this.vista); 
+		this.controladorPanelKomanda = new ControladorPanelKomanda(this, this.modelo, this.vista);
 		this.nabegatzenPanelHasiera();
 	}
 
