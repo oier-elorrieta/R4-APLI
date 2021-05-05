@@ -73,6 +73,7 @@ public class PanelHasiera extends JPanel {
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
+		this.btnBigData.addActionListener(listenerBigDataBotoia(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -92,4 +93,12 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
+	
+	private ActionListener listenerBigDataBotoia(ControladorPanelHasiera controladorPanelHasiera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controladorPanelHasiera.probabilitatea(3);
+			}
+		};
+	}
 }
