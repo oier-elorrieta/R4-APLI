@@ -12,10 +12,12 @@ import ModeloBBDD.metodoakOfrece;
 import ModeloBBDD.metodoakPlaterZerrendak; 
 
 public class Modelo {
-
+	
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
-	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);													
+	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);		
+	
+	private Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.elikagaiak();											
 
 	// *****************************************************************************************************************************************************************
 
@@ -192,4 +194,13 @@ public class Modelo {
 		Komanda k1 = hasieratuOperaciones();
 		ModeloBBDD.metodoakKomanda.ezabatuKomanda(k1.getTransferentziaZenbakia());
 	}
+	
+	public ArrayList<String> Probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException {
+		return metodoakProbabilitatea.Probabilitatea(zenbaki, produktuak);
+	}
+	
+	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException {
+		return metodoakProbabilitatea.Probabilitatealocala(zenbaki, produktuak, konprobatuNIF());
+	}
+	
 }

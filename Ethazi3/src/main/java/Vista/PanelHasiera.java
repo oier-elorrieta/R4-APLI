@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -9,7 +11,6 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import Controlador.ControladorPanelHasiera;
-import Modelo.metodoakProbabilitatea;
 
 @SuppressWarnings("serial")
 public class PanelHasiera extends JPanel {
@@ -74,7 +75,7 @@ public class PanelHasiera extends JPanel {
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
-		this.btnBigData.addActionListener(listenerBigData(this.controladorPanelHasiera));
+		this.btnBigData.addActionListener(listenerBigDataBotoia(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -93,12 +94,20 @@ public class PanelHasiera extends JPanel {
 				controladorPanelHasiera.sakatuItxiBotoia();
 			}
 		};
-	}
+	} 
 	
-	private ActionListener listenerBigData(ControladorPanelHasiera controladorPanelHasiera) {
+	private ActionListener listenerBigDataBotoia(ControladorPanelHasiera controladorPanelHasiera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				metodoakProbabilitatea.Probabilitatea();
+				try {
+					controladorPanelHasiera.probabilitatea(3);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		};
 	}
