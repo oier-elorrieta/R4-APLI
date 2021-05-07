@@ -37,7 +37,7 @@ public class metodoakProbabilitatea {
 
 	public static ArrayList<Float> probabilitategehiena(float[][] taula) {
 		ArrayList<Float> numbers1Dim = new ArrayList<Float>();
-
+		ArrayList<String> bostlehenak = new ArrayList<String>();
 		for (int i = 0; i < taula.length; i++)
 		{
 		    for (int x = 0; x < taula[i].length; x++)
@@ -46,8 +46,12 @@ public class metodoakProbabilitatea {
 		    }
 		}
 		numbers1Dim.sort(null);
-		numbers1Dim.get(10);
 		System.out.println(numbers1Dim.toString());
+		System.out.println(numbers1Dim.toString().substring(1,6));
+		for(int i=0;i<5;i++) {
+			bostlehenak.add((String) numbers1Dim.chartAt(numbers1Dim.size()+i));
+		}
+		System.out.println(bostlehenak.toString());
 		return numbers1Dim;
 	}
 

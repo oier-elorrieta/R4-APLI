@@ -9,6 +9,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import Controlador.ControladorPanelHasiera;
+import Modelo.metodoakProbabilitatea;
 
 @SuppressWarnings("serial")
 public class PanelHasiera extends JPanel {
@@ -73,6 +74,7 @@ public class PanelHasiera extends JPanel {
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
+		this.btnBigData.addActionListener(listenerBigData(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -91,5 +93,13 @@ public class PanelHasiera extends JPanel {
 				controladorPanelHasiera.sakatuItxiBotoia();
 			}
 		};
-	} 
+	}
+	
+	private ActionListener listenerBigData(ControladorPanelHasiera controladorPanelHasiera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				metodoakProbabilitatea.Probabilitatea();
+			}
+		};
+	}
 }
