@@ -2,6 +2,7 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -30,7 +31,7 @@ public class PanelHasiera extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnDatuBasePo = new JButton("Datu basea populatu");
@@ -42,13 +43,13 @@ public class PanelHasiera extends JPanel {
 		btnBigData.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBigData.setBounds(220, 77, 220, 150);
 		add(btnBigData);
-		
+
 		btnSarratu = new JButton("SARRATU");
 		btnSarratu.setBounds(351, 238, 89, 23);
 		add(btnSarratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		tf_1 = new JTextField();
 		tf_1.setBackground(Color.BLUE);
 		tf_1.setBounds(10, 269, 430, 20);
@@ -87,7 +88,7 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
-	
+
 	private ActionListener listenerSarratuBotoia(ControladorPanelHasiera controladorPanelHasiera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -95,17 +96,14 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
-	
+
 	private ActionListener listenerBigDataBotoia(ControladorPanelHasiera controladorPanelHasiera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					controladorPanelHasiera.probabilitatea(3);
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+					controladorPanelHasiera.sartuDatuakFitxategian(4);
+				} catch (ClassNotFoundException | IOException | SQLException e) {
 					e.printStackTrace();
 				}
 			}

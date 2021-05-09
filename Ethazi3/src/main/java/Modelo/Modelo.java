@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -12,11 +13,11 @@ import ModeloBBDD.metodoakOfrece;
 import ModeloBBDD.metodoakPlaterZerrendak; 
 
 public class Modelo {
-	
+
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
 	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);		
-	
+
 	private Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.elikagaiak();											
 
 	// *****************************************************************************************************************************************************************
@@ -31,18 +32,6 @@ public class Modelo {
 
 	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
-	}
-
-	public String pantailaratuIzena() {
-		return metodoak.pantailatuProduktuaIzena(karroa);
-	}
-
-	public String pantailaratuKopurua() {
-		return metodoak.pantailatuProduktuaKopurua(karroa);
-	}
-
-	public String pantailaratuPrezioa() {
-		return metodoak.pantailatuProduktuaPrezioa(karroa);
 	}
 
 	public double diruTotala() {
@@ -125,7 +114,7 @@ public class Modelo {
 		usuarioa.setPasahitza(pasahitza);
 		return usuarioa;
 	}	
-	
+
 	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) {
 		ModeloBBDD.metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
 	}
@@ -194,13 +183,20 @@ public class Modelo {
 		Komanda k1 = hasieratuOperaciones();
 		ModeloBBDD.metodoakKomanda.ezabatuKomanda(k1.getTransferentziaZenbakia());
 	}
-	
+
 	public ArrayList<String> Probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException {
 		return metodoakProbabilitatea.Probabilitatea(zenbaki, produktuak);
 	}
-	
+
 	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException {
-		return metodoakProbabilitatea.Probabilitatealocala(zenbaki, produktuak, konprobatuNIF());
+		return metodoakProbabilitatea.ProbabilitateaLokala(zenbaki, produktuak, konprobatuNIF());
+	}
+
+	public void sartuDatuakFitxategian(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
+		metodoakFitxategiak.sartuDatuakFitxategian(zenbaki, produktuak);
 	}
 	
+	public void sartuDatuakFitxategianLokalean(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
+		metodoakFitxategiak.sartuDatuakFitxategianLokala(zenbaki, produktuak, konprobatuNIF());
+	}
 }

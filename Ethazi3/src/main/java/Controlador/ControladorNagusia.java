@@ -1,14 +1,15 @@
 package Controlador;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import Modelo.Karritoa;
-import Modelo.Modelo;
+import Modelo.Modelo; 
 import Vista.Vista; ; 
 
 public abstract class ControladorNagusia { 	
-	
+
 	protected Controlador controlador;
 	protected Modelo modelo;
 	protected Vista vista;
@@ -18,7 +19,7 @@ public abstract class ControladorNagusia {
 		this.modelo = modelo;
 		this.vista = vista;
 	}
-	
+
 	public void sakatuPanelLogin() {
 		this.controlador.nabegatzenPanelLogin();
 	}
@@ -30,7 +31,7 @@ public abstract class ControladorNagusia {
 	public void sakatuTicketPanelaIkustekoBotoia() {
 		this.controlador.nabegatzenPanelTicket();
 	}
-	
+
 	public void hasieraraBotoia() {
 		this.controlador.nabegatzenPanelHasiera();
 	}
@@ -110,12 +111,16 @@ public abstract class ControladorNagusia {
 	public void sartuTiene() {
 		this.modelo.sartuTiene();
 	}
-	
+
 	public ArrayList<String> probabilitatealocala(int zenbaki) throws ClassNotFoundException, SQLException {
 		return modelo.Probabilitatealocal(zenbaki);
 	}
-	
+
 	public ArrayList<String> probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException{
 		return modelo.Probabilitatea(zenbaki);
+	}
+
+	public void sartuDatuakFitxategianLokalean(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
+		this.modelo.sartuDatuakFitxategianLokalean(zenbaki);
 	}
 }

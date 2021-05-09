@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -11,7 +12,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import Controlador.ControladorPanelMenuJatetxea;
 import Controlador.ControladorPanelMenuKafetegia;
 import javax.swing.SwingConstants;
 
@@ -72,7 +72,7 @@ public class PanelMenuKafetegia extends JPanel {
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
-		
+
 		mntmXprobababilitatea = new JMenuItem("Probababilitatea");
 		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.RIGHT);
 		mntmXprobababilitatea.setForeground(Color.RED);
@@ -152,22 +152,19 @@ public class PanelMenuKafetegia extends JPanel {
 			}
 		};
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-			private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuKafetegia controladorPanelMenuKafetegia) {
-				return new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						try {
-							controladorPanelMenuKafetegia.probabilitatea(3);
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				};
+	private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuKafetegia controladorPanelMenuKafetegia) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelMenuKafetegia.probabilitatea(3);
+					controladorPanelMenuKafetegia.sartuDatuakFitxategianLokalean(3);
+				} catch (ClassNotFoundException | SQLException | IOException e) {
+					e.printStackTrace();
+				}
 			}
+		};
+	}
 }

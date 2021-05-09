@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -80,7 +81,7 @@ public class PanelMenuJatetxea extends JPanel {
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
-		
+
 		mntmXprobababilitatea = new JMenuItem("Probababilitatea");
 		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.RIGHT);
 		mntmXprobababilitatea.setForeground(Color.RED);
@@ -171,22 +172,19 @@ public class PanelMenuJatetxea extends JPanel {
 			}
 		};
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-		private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
-			return new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					try {
-						controladorPanelJatetxea.probabilitatea(3);
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+	private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelJatetxea.probabilitatea(3);
+					controladorPanelJatetxea.sartuDatuakFitxategianLokalean(3);
+				} catch (ClassNotFoundException | IOException | SQLException e) {
+					e.printStackTrace();
 				}
-			};
-		}
+			}	
+		};
+	}
 }

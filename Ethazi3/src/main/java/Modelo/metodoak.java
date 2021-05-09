@@ -13,36 +13,6 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String pantailatuProduktuaIzena(ArrayList<Karritoa> karroa) {
-		String PantailatukoDena = "";
-		for (int i = 0; i < karroa.size(); i++) {
-			PantailatukoDena = PantailatukoDena + "<html>" + karroa.get(i).getElikagaia() + "<br><html>";
-		}
-		return PantailatukoDena;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	public static String pantailatuProduktuaKopurua(ArrayList<Karritoa> karroa) {
-		String PantailatukoDena = "";
-		for (int i = 0; i < karroa.size(); i++) {
-			PantailatukoDena = PantailatukoDena + "<html>" + "x"+karroa.get(i).getKopuru() + "<br><html>";
-		}
-		return PantailatukoDena;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	public static String pantailatuProduktuaPrezioa(ArrayList<Karritoa> karroa) {
-		String PantailatukoDena = "";
-		for (int i = 0; i < karroa.size(); i++) {
-			PantailatukoDena = PantailatukoDena + "<html>" + karroa.get(i).getBalioa()+"€" + "<br><html>";
-		}
-		return PantailatukoDena;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
 	public static String[] sartuSalgaiak() {
 
 		Produktua elikagaiak[] = metodoakPlaterrakEtaProduktuak.elikagaiak();
@@ -75,20 +45,6 @@ public class metodoak {
 		for (int i = 0; i < produktuak.length; i++) {
 			if (produktuak[i].getIzena().equalsIgnoreCase(aukera)) {
 				dirua = kantitatea * produktuak[i].getSaltzekoPrezioa();
-				break;
-			}
-		}
-		return dirua;
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	public static double jasoProduktuenPrezioa(String aukera, int kantitatea) {
-		Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.produktuGuztiak();
-		double dirua = sartuDirua(aukera, kantitatea);
-		for (int i = 0; i < produktuak.length; i++) {
-			if (produktuak[i].getIzena().equalsIgnoreCase(aukera)) {
-				dirua = kantitatea * produktuak[i].getErosPrezioa();
 				break;
 			}
 		}

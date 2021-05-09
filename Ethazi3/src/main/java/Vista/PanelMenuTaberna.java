@@ -4,15 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.SwingConstants; 
 
-import Controlador.ControladorPanelMenuJatetxea;
 import Controlador.ControladorPanelMenuTaberna;
 
 @SuppressWarnings("serial")
@@ -66,7 +66,7 @@ public class PanelMenuTaberna extends JPanel {
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
-		
+
 		mntmXprobababilitatea = new JMenuItem("Probababilitatea");
 		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.RIGHT);
 		mntmXprobababilitatea.setForeground(Color.RED);
@@ -135,22 +135,20 @@ public class PanelMenuTaberna extends JPanel {
 			}
 		};
 	}
-	
+
 	// *****************************************************************************************************************************************************************************************************
 
-			private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
-				return new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						try {
-							controladorPanelMenuTaberna.probabilitatea(3);
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				};
+	private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuTaberna controladorPanelMenuTaberna) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelMenuTaberna.probabilitatea(3);
+					controladorPanelMenuTaberna.sartuDatuakFitxategianLokalean(4);
+				} catch (ClassNotFoundException | IOException | SQLException e) {
+					e.printStackTrace();
+				}
+
 			}
+		};
+	}
 }

@@ -1,7 +1,6 @@
 package TestModelo;
 
-import static org.junit.Assert.*;
-import java.sql.SQLException;
+import static org.junit.Assert.*; 
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import org.junit.Test;
@@ -94,57 +93,6 @@ public class ModeloTest {
 	// *****************************************************************************************************************************************************************************************************
 
 	@Test
-	public void testpantailatuIzena() {
-
-		Karritoa sidra = new Karritoa("Sidra", 1, 3);
-
-		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
-
-		aukera.add(sidra);
-
-		String esperotakoa = "Sidra";
-
-		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaIzena(aukera));
-
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	@Test
-	public void testpantailatuKopurua() {
-
-		Karritoa sidra = new Karritoa("Sidra", 1, 3);
-
-		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
-
-		aukera.add(sidra);
-
-		int esperotakoa = 1;
-
-		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaKopurua(aukera));
-
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	@Test
-	public void testpantailatuPrezioa() {
-
-		Karritoa sidra = new Karritoa("Sidra", 1, 3);
-
-		ArrayList<Karritoa> aukera = new ArrayList<Karritoa>(10);
-
-		aukera.add(sidra);
-
-		int esperotakoa = 3;
-
-		assertNotEquals(esperotakoa, metodoak.pantailatuProduktuaPrezioa(aukera));
-
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	@Test
 	public void testSartuProduktuaArrayan() {
 
 		Karritoa sidra = new Karritoa("Sidra", 1, 2);
@@ -187,15 +135,5 @@ public class ModeloTest {
 
 		assertEquals(esperotakoa.getImage(), metodoak.argazkiaAukeratu("Zukua").getImage());
 
-	}
-
-	// *****************************************************************************************************************************************************************************************************
-
-	@Test
-	public void testJasoProduktuenPrezioa() {
-
-		double esperotakoa = 0.7 * 2; // Ardoa kostatzen du 0.7.
-
-		assertEquals(esperotakoa, metodoak.jasoProduktuenPrezioa("Ardoa", 2), 0);
 	}
 }
