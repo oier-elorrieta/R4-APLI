@@ -66,14 +66,14 @@ public class metodoakProbabilitatea {
 
 		for (int i = 0; i < produktuEmaitzak.size(); i++) {
 			System.out.println(produktuEmaitzak.get(i)+"eg1");
-		}
+		} 
 		
-		metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak);
+		metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, null);
 
 		return produktuEmaitzak;
 	}
 
-	public static ArrayList<String> ProbabilitateaLokala(int zenbaki, Produktua produktuak[],String nif) throws ClassNotFoundException, SQLException {
+	public static ArrayList<String> ProbabilitateaLokala(int zenbaki, Produktua produktuak[],String nif) throws ClassNotFoundException, SQLException, IOException {
 		ModeloBBDD.metodoaProbabilitatea.Fechasartu();
 		String fecha =  ModeloBBDD.metodoaProbabilitatea.stringfecha();
 		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak.produktuKantitatea()];
@@ -133,9 +133,9 @@ public class metodoakProbabilitatea {
 
 		for (int i = 0; i < produktuEmaitzak.size(); i++) {
 			System.out.println(produktuEmaitzak.get(i)+"eg1");
-		}
+		} 
 
-		metodoakFitxategiak.sartuDatuakFitxategianLokala(produktuEmaitzak, nif);
+		metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, nif);
 		
 		return produktuEmaitzak;
 	}

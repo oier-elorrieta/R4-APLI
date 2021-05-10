@@ -112,7 +112,7 @@ public abstract class ControladorNagusia {
 		this.modelo.sartuTiene();
 	}
 
-	public ArrayList<String> probabilitatealocala(int zenbaki) throws ClassNotFoundException, SQLException {
+	public ArrayList<String> probabilitatealocala(int zenbaki) throws ClassNotFoundException, SQLException, IOException {
 		return modelo.Probabilitatealocal(zenbaki);
 	}
 

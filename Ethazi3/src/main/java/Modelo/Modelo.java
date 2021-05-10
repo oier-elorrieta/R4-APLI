@@ -188,7 +188,7 @@ public class Modelo {
 		return metodoakProbabilitatea.Probabilitatea(zenbaki, produktuak);
 	}
 
-	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException {
+	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException, IOException {
 		return metodoakProbabilitatea.ProbabilitateaLokala(zenbaki, produktuak, konprobatuNIF());
 	}
 }
