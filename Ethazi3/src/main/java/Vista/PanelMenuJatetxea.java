@@ -4,8 +4,7 @@ import java.awt.Color;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.awt.event.ActionListener; 
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -179,9 +178,8 @@ public class PanelMenuJatetxea extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-
-					controladorPanelJatetxea.sartuDatuakFitxategianLokalean(3);
-				} catch (ClassNotFoundException | IOException | SQLException e) {
+					controladorPanelJatetxea.probabilitatealocala(3);
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 			}	

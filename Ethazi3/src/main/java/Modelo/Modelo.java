@@ -184,19 +184,11 @@ public class Modelo {
 		ModeloBBDD.metodoakKomanda.ezabatuKomanda(k1.getTransferentziaZenbakia());
 	}
 
-	public ArrayList<String> Probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException {
+	public ArrayList<String> Probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException, IOException {
 		return metodoakProbabilitatea.Probabilitatea(zenbaki, produktuak);
 	}
 
 	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException {
 		return metodoakProbabilitatea.ProbabilitateaLokala(zenbaki, produktuak, konprobatuNIF());
-	}
-
-	public void sartuDatuakFitxategian(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
-		metodoakFitxategiak.sartuDatuakFitxategian(zenbaki, produktuak);
-	}
-	
-	public void sartuDatuakFitxategianLokalean(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
-		metodoakFitxategiak.sartuDatuakFitxategianLokala(zenbaki, produktuak, konprobatuNIF());
 	}
 }

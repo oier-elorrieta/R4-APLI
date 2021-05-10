@@ -116,11 +116,7 @@ public abstract class ControladorNagusia {
 		return modelo.Probabilitatealocal(zenbaki);
 	}
 
-	public ArrayList<String> probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException{
+	public ArrayList<String> probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException, IOException{
 		return modelo.Probabilitatea(zenbaki);
-	}
-
-	public void sartuDatuakFitxategianLokalean(int zenbaki) throws ClassNotFoundException, IOException, SQLException { 
-		this.modelo.sartuDatuakFitxategianLokalean(zenbaki);
-	}
+	} 
 }

@@ -101,8 +101,7 @@ public class PanelHasiera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelHasiera.probabilitatea(3);
-					controladorPanelHasiera.sartuDatuakFitxategian(4);
+					controladorPanelHasiera.probabilitatea(3); 
 				} catch (ClassNotFoundException | IOException | SQLException e) {
 					e.printStackTrace();
 				}

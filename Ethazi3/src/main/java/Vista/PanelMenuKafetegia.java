@@ -3,8 +3,7 @@ package Vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.awt.event.ActionListener; 
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -159,9 +158,8 @@ public class PanelMenuKafetegia extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-
-					controladorPanelMenuKafetegia.sartuDatuakFitxategianLokalean(3);
-				} catch (ClassNotFoundException | SQLException | IOException e) {
+					controladorPanelMenuKafetegia.probabilitatealocala(3);
+				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
 			}
