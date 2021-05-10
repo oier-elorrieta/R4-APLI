@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 public class metodoakProbabilitatea {
 
+	
 	public static ArrayList<String> Probabilitatea(int zenbaki, Produktua produktuak[]) throws ClassNotFoundException, SQLException {
-		//ModeloBBDD.metodoaProbabilitatea.Fechasartu();
+		if(ModeloBBDD.metodoaProbabilitatea.konprobatufecha()==false) {
+			ModeloBBDD.metodoaProbabilitatea.Fechasartu();
+		}
 		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak.produktuKantitatea()];
 		float emaitza = 0;
 		for (int i = 0; i < produktuak.length; i++) {
@@ -15,10 +18,11 @@ public class metodoakProbabilitatea {
 					emaitza = ModeloBBDD.metodoakFuntzioakDeitu.funtzioProbabilitateOrokorra(produktuak[i].getIzena(), produktuak[j].getIzena());
 
 					taula[i][j] = emaitza;
-					//ModeloBBDD.metodoaProbabilitatea.ProbGuztiasartu(produktuak[i].getIzena(),produktuak[j].getIzena(),emaitza);
+					ModeloBBDD.metodoaProbabilitatea.ProbGuztiasartu(produktuak[i].getIzena(),produktuak[j].getIzena(),emaitza);
 				}
 			}
 		}
+		
 		for (int i = 0; i < taula.length; i++) {
 			for (int j = 0; j < taula.length; j++) {
 
@@ -69,7 +73,7 @@ public class metodoakProbabilitatea {
 	}
 
 	public static ArrayList<String> ProbabilitateaLokala(int zenbaki, Produktua produktuak[],String nif) throws ClassNotFoundException, SQLException {
-		//ModeloBBDD.metodoaProbabilitatea.Fechasartu();
+		ModeloBBDD.metodoaProbabilitatea.Fechasartu();
 		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak.produktuKantitatea()];
 		float emaitza = 0;
 		for (int i = 0; i < produktuak.length; i++) {

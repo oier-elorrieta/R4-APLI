@@ -179,7 +179,7 @@ public class PanelMenuJatetxea extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelJatetxea.probabilitatea(3);
+
 					controladorPanelJatetxea.sartuDatuakFitxategianLokalean(3);
 				} catch (ClassNotFoundException | IOException | SQLException e) {
 					e.printStackTrace();

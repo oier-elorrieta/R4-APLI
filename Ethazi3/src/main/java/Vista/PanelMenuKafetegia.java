@@ -159,7 +159,7 @@ public class PanelMenuKafetegia extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelMenuKafetegia.probabilitatea(3);
+
 					controladorPanelMenuKafetegia.sartuDatuakFitxategianLokalean(3);
 				} catch (ClassNotFoundException | SQLException | IOException e) {
 					e.printStackTrace();

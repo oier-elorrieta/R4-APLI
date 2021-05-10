@@ -142,7 +142,7 @@ public class PanelMenuTaberna extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelMenuTaberna.probabilitatea(3);
+
 					controladorPanelMenuTaberna.sartuDatuakFitxategianLokalean(4);
 				} catch (ClassNotFoundException | IOException | SQLException e) {
 					e.printStackTrace();
