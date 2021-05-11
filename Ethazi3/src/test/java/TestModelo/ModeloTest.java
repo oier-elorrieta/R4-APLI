@@ -1,6 +1,9 @@
 package TestModelo;
 
-import static org.junit.Assert.*; 
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import org.junit.Test;
@@ -9,6 +12,7 @@ import Modelo.Karritoa;
 import Modelo.Produktua;
 import Modelo.metodoak;
 import Modelo.metodoakPlaterrakEtaProduktuak;
+import Modelo.metodoakProbabilitatea;
 
 public class ModeloTest {
 
@@ -135,5 +139,55 @@ public class ModeloTest {
 
 		assertEquals(esperotakoa.getImage(), metodoak.argazkiaAukeratu("Zukua").getImage());
 
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void probabilitategehiena() {
+
+		float taula[][] = new float[2][3];
+		
+		taula[0][0] = (float) 8.3;
+		taula[0][1] = (float) 9;
+		taula[0][2] = (float) 4;
+		taula[1][0] = (float) 1.3;
+		taula[1][1] = (float) 3.3;
+		taula[1][2] = (float) 2.3;
+				
+		ArrayList<Float> esperotakoa = new ArrayList<Float>();
+		
+		esperotakoa.add((float) 1.3);
+		esperotakoa.add((float) 2.3);
+		esperotakoa.add((float) 3.3);
+		esperotakoa.add((float) 4);
+		esperotakoa.add((float) 8.3);
+		esperotakoa.add((float) 9);
+
+		assertEquals(esperotakoa, metodoakProbabilitatea.probabilitategehiena(taula));
+
+	}
+	
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void Probabilitatea() throws ClassNotFoundException, SQLException, IOException {
+			
+		ArrayList<String> esperotakoa = new ArrayList<String>();
+		
+		assertEquals(esperotakoa, metodoakProbabilitatea.Probabilitatea(1, elikagaiak));
+		
+	}
+	
+	// *****************************************************************************************************************************************************************************************************
+
+	@Test
+	public void ProbabilitateaLokala() throws ClassNotFoundException, SQLException, IOException {
+				
+		ArrayList<String> esperotakoa = new ArrayList<String>();
+			
+		assertEquals(esperotakoa, metodoakProbabilitatea.ProbabilitateaLokala(1, elikagaiak, "12345678R"));
+			
 	}
 }

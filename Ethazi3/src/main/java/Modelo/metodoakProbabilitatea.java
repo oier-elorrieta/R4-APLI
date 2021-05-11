@@ -6,30 +6,24 @@ import java.util.ArrayList;
 
 public class metodoakProbabilitatea {
 
-	public static ArrayList<String> Probabilitatea(int zenbaki, Produktua produktuak[]) throws ClassNotFoundException, SQLException, IOException {
+	public static ArrayList<String> Probabilitatea(int zenbaki, Produktua produktuak[])
+			throws ClassNotFoundException, SQLException, IOException {
 		ModeloBBDD.metodoaProbabilitatea.Fechasartu();
-		String fecha =  ModeloBBDD.metodoaProbabilitatea.stringfecha();
-		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak.produktuKantitatea()];
+		String fecha = ModeloBBDD.metodoaProbabilitatea.stringfecha();
+		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak
+				.produktuKantitatea()];
 		float emaitza = 0;
 		for (int i = 0; i < produktuak.length; i++) {
 			for (int j = 0; j < produktuak.length; j++) {
 				if (i != j) {
-					emaitza = ModeloBBDD.metodoakFuntzioakDeitu.funtzioProbabilitateOrokorra(produktuak[i].getIzena(), produktuak[j].getIzena());
+					emaitza = ModeloBBDD.metodoakFuntzioakDeitu.funtzioProbabilitateOrokorra(produktuak[i].getIzena(),
+							produktuak[j].getIzena());
 
 					taula[i][j] = emaitza;
-					ModeloBBDD.metodoaProbabilitatea.ProbGuztiasartu(produktuak[i].getIzena(),produktuak[j].getIzena(),emaitza, fecha);
+					ModeloBBDD.metodoaProbabilitatea.ProbGuztiasartu(produktuak[i].getIzena(), produktuak[j].getIzena(),
+							emaitza, fecha);
 				}
 			}
-		}
-
-		for (int i = 0; i < taula.length; i++) {
-			for (int j = 0; j < taula.length; j++) {
-
-				System.out.print(taula[i][j]);
-				System.out.print("  ");
-
-			}
-			System.out.println(" ");
 		}
 
 		ArrayList<Float> emaitzak = probabilitategehiena(taula);
@@ -46,12 +40,15 @@ public class metodoakProbabilitatea {
 
 		for (int x = 0; x < azkenEmaitzak.size(); x++) {
 
-			boolean  conseguido = false;
+			boolean conseguido = false;
 
 			for (int i = 0; i < taula.length && !conseguido; i++) {
 				for (int j = 0; j < taula.length && !conseguido; j++) {
 					if (azkenEmaitzak.get(x) == (taula[i][j]) && taula[i][j] != 0) {
-						if (produktuEmaitzak.contains(produktuak[i].getIzena() + "/" + produktuak[j].getIzena()) == false && produktuEmaitzak.contains(produktuak[j].getIzena() + "/" + produktuak[i].getIzena()) == false) {
+						if (produktuEmaitzak
+								.contains(produktuak[i].getIzena() + "/" + produktuak[j].getIzena()) == false
+								&& produktuEmaitzak
+										.contains(produktuak[j].getIzena() + "/" + produktuak[i].getIzena()) == false) {
 							produktuEmaitzak.add(produktuak[i].getIzena() + "/" + produktuak[j].getIzena());
 							conseguido = true;
 						}
@@ -60,43 +57,32 @@ public class metodoakProbabilitatea {
 			}
 		}
 
-		for (int i = 0; i < azkenEmaitzak.size(); i++) {
-			System.out.println(azkenEmaitzak.get(i)+"egr");
+		if (produktuEmaitzak.size() != 0) {
+			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, null);
 		}
-
-		for (int i = 0; i < produktuEmaitzak.size(); i++) {
-			System.out.println(produktuEmaitzak.get(i)+"eg1");
-		} 
 		
-		metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, null);
-
 		return produktuEmaitzak;
 	}
 
-	public static ArrayList<String> ProbabilitateaLokala(int zenbaki, Produktua produktuak[],String nif) throws ClassNotFoundException, SQLException, IOException {
+	public static ArrayList<String> ProbabilitateaLokala(int zenbaki, Produktua produktuak[], String nif)
+			throws ClassNotFoundException, SQLException, IOException {
 		ModeloBBDD.metodoaProbabilitatea.Fechasartu();
-		String fecha =  ModeloBBDD.metodoaProbabilitatea.stringfecha();
-		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak.produktuKantitatea()];
+		String fecha = ModeloBBDD.metodoaProbabilitatea.stringfecha();
+		float taula[][] = new float[metodoakPlaterrakEtaProduktuak.produktuKantitatea()][metodoakPlaterrakEtaProduktuak
+				.produktuKantitatea()];
 		float emaitza = 0;
 		for (int i = 0; i < produktuak.length; i++) {
 			for (int j = 0; j < produktuak.length; j++) {
 				if (i != j) {
 
-					emaitza = ModeloBBDD.metodoakFuntzioakDeitu.funtzioProbabilitateLokala(produktuak[i].getIzena(), produktuak[j].getIzena(),nif);
+					emaitza = ModeloBBDD.metodoakFuntzioakDeitu.funtzioProbabilitateLokala(produktuak[i].getIzena(),
+							produktuak[j].getIzena(), nif);
 
 					taula[i][j] = emaitza;
-					ModeloBBDD.metodoaProbabilitatea.ProbLocalasartu(produktuak[i].getIzena(),produktuak[j].getIzena(),emaitza, nif, fecha);
+					ModeloBBDD.metodoaProbabilitatea.ProbLocalasartu(produktuak[i].getIzena(), produktuak[j].getIzena(),
+							emaitza, nif, fecha);
 				}
 			}
-		}
-		for (int i = 0; i < taula.length; i++) {
-			for (int j = 0; j < taula.length; j++) {
-
-				System.out.print(taula[i][j]);
-				System.out.print("  ");
-
-			}
-			System.out.println(" ");
 		}
 
 		ArrayList<Float> emaitzak = probabilitategehiena(taula);
@@ -113,12 +99,15 @@ public class metodoakProbabilitatea {
 
 		for (int x = 0; x < azkenEmaitzak.size(); x++) {
 
-			boolean  conseguido = false;
+			boolean conseguido = false;
 
 			for (int i = 0; i < taula.length && !conseguido; i++) {
 				for (int j = 0; j < taula.length && !conseguido; j++) {
 					if (azkenEmaitzak.get(x) == (taula[i][j]) && taula[i][j] != 0) {
-						if (produktuEmaitzak.contains(produktuak[i].getIzena() + "/" + produktuak[j].getIzena()) == false && produktuEmaitzak.contains(produktuak[j].getIzena() + "/" + produktuak[i].getIzena()) == false) {
+						if (produktuEmaitzak
+								.contains(produktuak[i].getIzena() + "/" + produktuak[j].getIzena()) == false
+								&& produktuEmaitzak
+										.contains(produktuak[j].getIzena() + "/" + produktuak[i].getIzena()) == false) {
 							produktuEmaitzak.add(produktuak[i].getIzena() + "/" + produktuak[j].getIzena());
 							conseguido = true;
 						}
@@ -127,16 +116,11 @@ public class metodoakProbabilitatea {
 			}
 		}
 
-		for (int i = 0; i < azkenEmaitzak.size(); i++) {
-			System.out.println(azkenEmaitzak.get(i)+"egr");
+
+		if (produktuEmaitzak.size() != 0) {
+			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, nif);
 		}
 
-		for (int i = 0; i < produktuEmaitzak.size(); i++) {
-			System.out.println(produktuEmaitzak.get(i)+"eg1");
-		} 
-
-		metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, nif);
-		
 		return produktuEmaitzak;
 	}
 
