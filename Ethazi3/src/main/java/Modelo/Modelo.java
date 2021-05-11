@@ -10,7 +10,9 @@ import ModeloBBDD.metodoakFuntzioakDeitu;
 import ModeloBBDD.metodoakIncluye;
 import ModeloBBDD.metodoakKonprobaketak;
 import ModeloBBDD.metodoakOfrece;
-import ModeloBBDD.metodoakPlaterZerrendak; 
+import ModeloBBDD.metodoakPlaterZerrendak;
+import ModeloBBDD.metodoakPlaterrakEtaProduktuak;
+import ModeloBBDD.metodoakTiene; 
 
 public class Modelo {
 

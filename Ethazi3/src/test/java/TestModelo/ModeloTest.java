@@ -11,8 +11,8 @@ import org.junit.Test;
 import Modelo.Karritoa;
 import Modelo.Produktua;
 import Modelo.metodoak;
-import Modelo.metodoakPlaterrakEtaProduktuak;
 import Modelo.metodoakProbabilitatea;
+import ModeloBBDD.metodoakPlaterrakEtaProduktuak;
 
 public class ModeloTest {
 

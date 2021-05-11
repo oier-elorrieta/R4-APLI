@@ -1,6 +1,8 @@
 package Modelo; 
 import java.util.ArrayList;
-import javax.swing.ImageIcon;  
+import javax.swing.ImageIcon;
+
+import ModeloBBDD.metodoakPlaterrakEtaProduktuak;  
 
 public class metodoak {
 

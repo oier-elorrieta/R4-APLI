@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ModeloBBDD.metodoakPlaterrakEtaProduktuak;
+
 public class metodoakProbabilitatea {
 
 	public static ArrayList<String> Probabilitatea(int zenbaki, Produktua produktuak[])
