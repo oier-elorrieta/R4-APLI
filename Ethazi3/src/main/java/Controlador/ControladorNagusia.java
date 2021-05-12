@@ -27,7 +27,7 @@ public abstract class ControladorNagusia {
 		this.controlador.nabegatzenPanelFaktura();
 	}
 
-	public void sakatuTicketPanelaIkustekoBotoia() {
+	public void sakatuTicketPanelaIkustekoBotoia() throws SQLException {
 		this.controlador.nabegatzenPanelTicket();
 	}
 	
@@ -60,11 +60,11 @@ public abstract class ControladorNagusia {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 
-	public String[] ComboBoxaSakatu() {
+	public String[] ComboBoxaSakatu() throws SQLException {
 		return this.modelo.produktuakJaso();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) {
+	public ArrayList<Karritoa> sartu(String elikagaia,int kopuru) throws SQLException {
 		return this.modelo.sartu(elikagaia, kopuru); 
 	}  
 
@@ -91,23 +91,31 @@ public abstract class ControladorNagusia {
 		this.modelo.ezabatuProduktuenArraya();
 	}
 
-	public String konprobatuLokala() {
+	public String konprobatuLokala() throws SQLException {
 		return this.modelo.konprobatuLokala();
 	}
 
-	public String konprobatuLokalarenIzena() {
+	public String konprobatuLokalarenIzena() throws SQLException {
 		return this.modelo.konprobatuLokalarenIzena();
 	}
 
-	public String konprobatuNIF() {
+	public String konprobatuNIF() throws SQLException {
 		return this.modelo.konprobatuNIF();
 	} 
 
-	public int begiratuStock(String produktua, String nif) {
+	public int begiratuStock(String produktua, String nif) throws SQLException {
 		return this.modelo.begiratuStock(produktua, nif);
 	}
 
 	public void sartuTiene() {
 		this.modelo.sartuTiene();
 	}
+	
+	/*public ArrayList<String> probabilitatealocala(int zenbaki) throws ClassNotFoundException, SQLException {
+		return modelo.Probabilitatealocal(zenbaki);
+	}
+	
+	public ArrayList<String> probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException{
+		return modelo.Probabilitatea(zenbaki);
+	}*/
 }

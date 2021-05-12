@@ -135,28 +135,33 @@ public class PanelErregistratu extends JPanel {
 				String NAN = tf_NAN.getText();
 				String nif = tf_NIF.getText();
 				boolean luzeeraEgokia = controladorPanelErregistratu.konprobatuErabiltzaileAtributuenLuzeera(NAN, izena, abizena, pasahitza, nif);
-				boolean badagoNAN = controladorPanelErregistratu.begiratuNAN(NAN);
-				boolean onanif = controladorPanelErregistratu.begiratuNIF(nif); 
-				if(luzeeraEgokia == true) {
-					if(badagoNAN == true) {
-						JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
-						controladorPanelErregistratu.ikusiPanelErregistratu();
-					}else if(onanif == false) {
-						JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
-						controladorPanelErregistratu.ikusiPanelErregistratu();
+				boolean badagoNAN;
+				try {
+					badagoNAN = controladorPanelErregistratu.begiratuNAN(NAN);
+					boolean onanif = controladorPanelErregistratu.begiratuNIF(nif); 
+					if(luzeeraEgokia == true) {
+						if(badagoNAN == true) {
+							JOptionPane.showMessageDialog(null, "Erabiltzaile hau badago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE); 
+							controladorPanelErregistratu.ikusiPanelErregistratu();
+						}else if(onanif == false) {
+							JOptionPane.showMessageDialog(null, "NIF ez dago erregistratuta datu basean", "ERROR", JOptionPane.ERROR_MESSAGE);
+							controladorPanelErregistratu.ikusiPanelErregistratu();
+						}else {
+							try {
+								controladorPanelErregistratu.sakatuErregistratuBotoia(NAN, izena, abizena, pasahitza, nif);
+							} catch (SQLException e) {
+								e.printStackTrace();
+							} catch (ClassNotFoundException e) {
+								e.printStackTrace();
+							}	
+						}		
+						controladorPanelErregistratu.sakatuPanelLogin();
 					}else {
-						try {
-							controladorPanelErregistratu.sakatuErregistratuBotoia(NAN, izena, abizena, pasahitza, nif);
-						} catch (SQLException e) {
-							e.printStackTrace();
-						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
-						}	
-					}		
-					controladorPanelErregistratu.sakatuPanelLogin();
-				}else {
-					controladorPanelErregistratu.sakatuPanelLogin();
-				} 
+						controladorPanelErregistratu.sakatuPanelLogin();
+					} 
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		};
 	} 

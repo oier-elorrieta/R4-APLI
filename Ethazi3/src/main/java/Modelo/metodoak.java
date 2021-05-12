@@ -1,10 +1,11 @@
 package Modelo; 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;  
 
 public class metodoak {
 
-	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) { 
+	public static ArrayList<Karritoa> sartuProduktuaArrayan(String elikagaia, int kopuru, ArrayList<Karritoa> karroa) throws SQLException { 
 		double dirua = sartuDirua(elikagaia, kopuru);
 		Karritoa Prod = new Karritoa(elikagaia, kopuru, dirua);
 		karroa.add(Prod); 
@@ -43,7 +44,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String[] sartuSalgaiak() {
+	public static String[] sartuSalgaiak() throws SQLException {
 
 		Produktua elikagaiak[] = metodoakPlaterrakEtaProduktuak.elikagaiak();
 
@@ -56,7 +57,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static String[] sartuPlaterrak() {
+	public static String[] sartuPlaterrak() throws SQLException {
 
 		Produktua platerrak[] = metodoakPlaterrakEtaProduktuak.platerrak();
 
@@ -69,7 +70,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static double sartuDirua(String aukera, int kantitatea) {
+	public static double sartuDirua(String aukera, int kantitatea) throws SQLException {
 		Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.produktuGuztiak();
 		double dirua = 0;
 		for (int i = 0; i < produktuak.length; i++) {
@@ -83,7 +84,7 @@ public class metodoak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static double jasoProduktuenPrezioa(String aukera, int kantitatea) {
+	public static double jasoProduktuenPrezioa(String aukera, int kantitatea) throws SQLException {
 		Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.produktuGuztiak();
 		double dirua = sartuDirua(aukera, kantitatea);
 		for (int i = 0; i < produktuak.length; i++) {

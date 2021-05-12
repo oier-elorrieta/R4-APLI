@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -95,19 +97,24 @@ public class PanelLogin extends JPanel {
 				String pasahitza = tf_Pasahitza.getText();
 				String erabiltzailea = tf_NAN.getText();
 				controladorPanelLogin.sartuErabiltzaile(erabiltzailea, pasahitza); 
-				String lokalaMota = controladorPanelLogin.konprobatuLokala();
-				String erroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
+				String lokalaMota;
+				try {
+					lokalaMota = controladorPanelLogin.konprobatuLokala();
+					String erroreaLogeatzean = controladorPanelLogin.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 
-				if (erroreaLogeatzean.equals("EZ")) {
-					if (lokalaMota.equals("Bar")) {
-						controladorPanelLogin.sakatuPanelTabernaBotoia();
-					} else if (lokalaMota.equals("Cafetería")) {
-						controladorPanelLogin.sakatuPanelKafetegiaBotoia();
-					} else if (lokalaMota.equals("Restaurante")) {
-						controladorPanelLogin.sakatuPanelJatetxeBotoia();
+					if (erroreaLogeatzean.equals("EZ")) {
+						if (lokalaMota.equals("Bar")) {
+							controladorPanelLogin.sakatuPanelTabernaBotoia();
+						} else if (lokalaMota.equals("Cafetería")) {
+							controladorPanelLogin.sakatuPanelKafetegiaBotoia();
+						} else if (lokalaMota.equals("Restaurante")) {
+							controladorPanelLogin.sakatuPanelJatetxeBotoia();
+						}
+					} else {
+						controladorPanelLogin.ikusiPanelLogin();
 					}
-				} else {
-					controladorPanelLogin.ikusiPanelLogin();
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
 		};

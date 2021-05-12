@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -73,6 +75,7 @@ public class PanelHasiera extends JPanel {
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
+		this.btnBigData.addActionListener(listenerBigDataBotoia(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -92,4 +95,20 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
+	
+	private ActionListener listenerBigDataBotoia(ControladorPanelHasiera controladorPanelHasiera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				/*try {
+					controladorPanelHasiera.probabilitatea(3);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
+			}
+		};
+	}
 }

@@ -6,16 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.JOptionPane;
-
-import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.ConnectionPool;
 import ModeloBBDD.Kontsultak;
-
-
 
 public class metodoakPlaterrakEtaProduktuak {
 
-	public static int produktuKantitatea() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int produktuKantitatea() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectProduktuKantitatea);
 		int kantitatea = 0;
 		try {
@@ -35,8 +32,8 @@ public class metodoakPlaterrakEtaProduktuak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static int platerKantitatea() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static int platerKantitatea() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectPlaterKantitatea);
 		int kantitatea = 0;
 		try {
@@ -56,8 +53,8 @@ public class metodoakPlaterrakEtaProduktuak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static Produktua[] elikagaiak() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static Produktua[] elikagaiak() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		int produktuKantitate = produktuKantitatea();
 		String query1 = (Kontsultak.selectProduktuak);
 		Produktua elikagaiak[] = new Produktua[produktuKantitate];
@@ -88,8 +85,8 @@ public class metodoakPlaterrakEtaProduktuak {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public static Produktua[] platerrak() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static Produktua[] platerrak() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		int platerKantitatea = platerKantitatea();
 		String query1 = (Kontsultak.selectPlaterrak);
 		Produktua platerrak[] = new Produktua[platerKantitatea];
@@ -119,8 +116,8 @@ public class metodoakPlaterrakEtaProduktuak {
 	}
 
 	// ******************************************************************************************************************************************************************************************************
-	public static Produktua[] produktuGuztiak() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static Produktua[] produktuGuztiak() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectProductuakEtaPlaterrak);
 		Produktua produktuak[] = new Produktua[platerKantitatea() + produktuKantitatea()];
 		int kont = 0;

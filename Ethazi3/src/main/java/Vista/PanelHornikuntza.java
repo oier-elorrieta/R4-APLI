@@ -30,7 +30,7 @@ public class PanelHornikuntza extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelHornikuntza(ControladorPanelHornikuntza controladorPanelHornikuntza) {
+	public PanelHornikuntza(ControladorPanelHornikuntza controladorPanelHornikuntza) throws SQLException {
 
 		this.controladorPanelHornikuntza = controladorPanelHornikuntza;
 
@@ -49,7 +49,7 @@ public class PanelHornikuntza extends JPanel {
 		btnAtzera.setBounds(10, 268, 190, 21);
 		btnAtzera.setFont(new Font("Tahoma", Font.ITALIC, 11));
 		add(btnAtzera);
-		
+
 		btnSegi = new JButton("\u2714\uFE0F");
 		btnSegi.setBounds(351, 234, 89, 23);
 		btnSegi.setEnabled(false);
@@ -96,22 +96,32 @@ public class PanelHornikuntza extends JPanel {
 	private ActionListener listenerSegiBotoia(ControladorPanelHornikuntza controladorPanelHornikuntza) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelHornikuntza.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelHornikuntza.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelHornikuntza.konprobatuLokala().equals("Bar")) {
-					controladorPanelHornikuntza.sakatuPanelTabernaBotoia();
-				} else {
-					controladorPanelHornikuntza.sakatuPanelKafetegiaBotoia();
+				try {
+					if (controladorPanelHornikuntza.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelHornikuntza.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelHornikuntza.konprobatuLokala().equals("Bar")) {
+						controladorPanelHornikuntza.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelHornikuntza.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
 				}
 
 				String nomProduktua = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				String nif = controladorPanelHornikuntza.konprobatuNIF();
+				String nif;
 				try {
-					controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, nif,kantitatea);
-				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+					nif = controladorPanelHornikuntza.konprobatuNIF();
+					try {
+						controladorPanelHornikuntza.sartuHornikuntza(nomProduktua, nif, kantitatea);
+					} catch (ClassNotFoundException | SQLException e) {
+						e.printStackTrace();
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
 				}
+
 			}
 		};
 	}
@@ -131,12 +141,16 @@ public class PanelHornikuntza extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelHornikuntza controladorPanelHornikuntza) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (controladorPanelHornikuntza.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelHornikuntza.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelHornikuntza.konprobatuLokala().equals("Bar")) {
-					controladorPanelHornikuntza.sakatuPanelTabernaBotoia();
-				} else {
-					controladorPanelHornikuntza.sakatuPanelKafetegiaBotoia();
+				try {
+					if (controladorPanelHornikuntza.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelHornikuntza.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelHornikuntza.konprobatuLokala().equals("Bar")) {
+						controladorPanelHornikuntza.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelHornikuntza.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
 		};

@@ -21,7 +21,11 @@ public class ControladorPanelHornikuntza extends ControladorNagusia{
 	}
 
 	public void ikusiPanelHornikuntza() {
-		this.PanelHornikuntza = new PanelHornikuntza(this);
+		try {
+			this.PanelHornikuntza = new PanelHornikuntza(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		this.vista.ikusiPanela(this.PanelHornikuntza);
 	}
 	

@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.util.ArrayList;
+
 import Modelo.Modelo;
 import Vista.PanelHasiera;
 import Vista.Vista;
@@ -23,5 +25,6 @@ public class ControladorPanelHasiera extends ControladorNagusia{
 	public void ikusiPanelHasiera() {
 		this.panelHasiera = new PanelHasiera(this);
 		this.vista.ikusiPanela(this.panelHasiera);
-	}  
+	}
+	
 }

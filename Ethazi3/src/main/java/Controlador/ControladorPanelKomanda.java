@@ -23,7 +23,11 @@ public class ControladorPanelKomanda extends ControladorNagusia{
 	}
 
 	public void ikusiPanelKomanda() {
-		this.panelKomanda = new PanelKomanda(this);
+		try {
+			this.panelKomanda = new PanelKomanda(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		this.vista.ikusiPanela(this.panelKomanda);
 	}
 
@@ -31,19 +35,19 @@ public class ControladorPanelKomanda extends ControladorNagusia{
 		return metodoak.argazkiaAukeratu(aukera);
 	}
 
-	public String[] platerrakJaso() {
+	public String[] platerrakJaso() throws SQLException {
 		return this.modelo.platerrakJaso();
 	}
 
-	public String[] platerMotak() {
+	public String[] platerMotak() throws SQLException {
 		return this.modelo.platerMotak();
 	}
 
-	public String[] platerMota(String platerMota, String tipoa) {
+	public String[] platerMota(String platerMota, String tipoa) throws SQLException {
 		return this.modelo.platerMota(platerMota, tipoa);
 	}
 
-	public int platerKodea(String platerra){
+	public int platerKodea(String platerra) throws SQLException{
 		return this.modelo.platerKodea(platerra);
 	}
 
@@ -59,7 +63,7 @@ public class ControladorPanelKomanda extends ControladorNagusia{
 		modelo.hasieratuOperaciones();
 	}
 
-	public String[] platerMotaArabera(String platerMota) {
+	public String[] platerMotaArabera(String platerMota) throws SQLException {
 		return this.modelo.platerMotaArabera(platerMota);
 	}
 
@@ -67,7 +71,7 @@ public class ControladorPanelKomanda extends ControladorNagusia{
 		this.modelo.ezabatuKomanda();
 	}
 
-	public void ofrece() {
+	public void ofrece() throws SQLException {
 		this.modelo.ofrece();
 	}
 }

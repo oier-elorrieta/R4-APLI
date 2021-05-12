@@ -20,7 +20,7 @@ public class ControladorPanelTicket extends ControladorNagusia{
 		this.controlador = controlador;
 	}
 
-	public void ikusiPanelTicket() {
+	public void ikusiPanelTicket() throws SQLException {
 		this.panelTicket = new PanelTicket(this);
 		this.vista.ikusiPanela(panelTicket);
 	}

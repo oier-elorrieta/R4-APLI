@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.Erabiltzaile;
 import Modelo.Modelo;
 import Vista.PanelLogin; 
@@ -28,7 +30,7 @@ public class ControladorPanelLogin extends ControladorNagusia{
 		this.controlador.nabegatzenPanelErregistratu();
 	}
 	
-	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
+	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) throws SQLException {
 		return this.modelo.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	} 
 	

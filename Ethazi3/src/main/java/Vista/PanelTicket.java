@@ -44,7 +44,7 @@ public class PanelTicket extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelTicket(ControladorPanelTicket controladorPanelTicket) {
+	public PanelTicket(ControladorPanelTicket controladorPanelTicket) throws SQLException {
 		this.controladorPanelTicket = controladorPanelTicket;
 
 		setBackground(Color.LIGHT_GRAY);
@@ -167,12 +167,16 @@ public class PanelTicket extends JPanel {
 					controladorPanelTicket.sartuTiene();
 				} catch (ClassNotFoundException | SQLException e) { 
 					e.printStackTrace();
-				} if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelTicket.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelTicket.konprobatuLokala().equals("Bar")) {
-					controladorPanelTicket.sakatuPanelTabernaBotoia();
-				} else {
-					controladorPanelTicket.sakatuPanelKafetegiaBotoia();
+				} try {
+					if (controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelTicket.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelTicket.konprobatuLokala().equals("Bar")) {
+						controladorPanelTicket.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelTicket.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 
 			}
@@ -184,12 +188,16 @@ public class PanelTicket extends JPanel {
 	private ActionListener listenerAtzeraBotoia(ControladorPanelTicket controladorPanelTicket) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelTicket.sakatuPanelJatetxeBotoia();
-				}else if(controladorPanelTicket.konprobatuLokala().equals("Bar")) {
-					controladorPanelTicket.sakatuPanelTabernaBotoia();
-				}else {
-					controladorPanelTicket.sakatuPanelKafetegiaBotoia();
+				try {
+					if(controladorPanelTicket.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelTicket.sakatuPanelJatetxeBotoia();
+					}else if(controladorPanelTicket.konprobatuLokala().equals("Bar")) {
+						controladorPanelTicket.sakatuPanelTabernaBotoia();
+					}else {
+						controladorPanelTicket.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -203,19 +211,24 @@ public class PanelTicket extends JPanel {
 
 				String aukera = (String) cb_Produktoak.getSelectedItem();
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
-				int stockKantitatea = controladorPanelTicket.begiratuStock(aukera, controladorPanelTicket.konprobatuNIF());
-				btnAurrera.setEnabled(true);
-				if (kantitatea > stockKantitatea) {
-					JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}else {
-					if (kantitatea != 0) {  
-						controladorPanelTicket.sartu(aukera, kantitatea);
+				int stockKantitatea;
+				try {
+					stockKantitatea = controladorPanelTicket.begiratuStock(aukera, controladorPanelTicket.konprobatuNIF());
+					btnAurrera.setEnabled(true);
+					if (kantitatea > stockKantitatea) {
+						JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR", JOptionPane.ERROR_MESSAGE);
+					}else {
+						if (kantitatea != 0) {  
+							controladorPanelTicket.sartu(aukera, kantitatea);
+						}
 					}
+					nºunidades.setValue(0);
+					btnSegi.setEnabled(false);
+					cb_Produktoak.setSelectedItem(null);
+					argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				nºunidades.setValue(0);
-				btnSegi.setEnabled(false);
-				cb_Produktoak.setSelectedItem(null);
-				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
 	}

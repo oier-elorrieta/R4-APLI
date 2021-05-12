@@ -30,11 +30,11 @@ public class ControladorPanelErregistratu extends ControladorNagusia{
 		this.modelo.sartuDatuak(izena,abizena,pasahitza, nan, nif);
 	}
 
-	public boolean begiratuNAN(String nan) {
+	public boolean begiratuNAN(String nan) throws SQLException {
 		return this.modelo.begiratuNAN(nan);
 	}
 
-	public boolean begiratuNIF(String nif) {
+	public boolean begiratuNIF(String nif) throws SQLException {
 		return this.modelo.begiratuNIF(nif);
 	}
 

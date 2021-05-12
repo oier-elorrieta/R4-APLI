@@ -1,5 +1,7 @@
 package Controlador;
 
+import java.sql.SQLException;
+
 import Modelo.Modelo;
 import Vista.Vista;
 
@@ -70,7 +72,7 @@ public class Controlador {
 		this.controladorPanelHornikuntza.ikusiPanelHornikuntza();
 	}
 
-	public void nabegatzenPanelTicket() { 
+	public void nabegatzenPanelTicket() throws SQLException { 
 		this.controladorPanelTicket.ikusiPanelTicket();
 	}
 

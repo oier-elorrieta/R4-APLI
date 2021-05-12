@@ -51,12 +51,11 @@ public class PanelKomanda extends JPanel {
 
 	// *****************************************************************************************************************************************************************************************************
 
-	public PanelKomanda(ControladorPanelKomanda controladorPanelKomanda) {
+	public PanelKomanda(ControladorPanelKomanda controladorPanelKomanda) throws SQLException {
 		this.controladorPanelKomanda = controladorPanelKomanda;
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
@@ -215,13 +214,21 @@ public class PanelKomanda extends JPanel {
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
-				controladorPanelKomanda.ofrece();
-				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelKomanda.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
-					controladorPanelKomanda.sakatuPanelTabernaBotoia();
-				} else {
-					controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
+				try {
+					controladorPanelKomanda.ofrece();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				try {
+					if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelKomanda.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
+						controladorPanelKomanda.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 
 			}
@@ -238,12 +245,16 @@ public class PanelKomanda extends JPanel {
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
-				if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
-					controladorPanelKomanda.sakatuPanelJatetxeBotoia();
-				} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
-					controladorPanelKomanda.sakatuPanelTabernaBotoia();
-				} else {
-					controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
+				try {
+					if (controladorPanelKomanda.konprobatuLokala().equals("Restaurante")) {
+						controladorPanelKomanda.sakatuPanelJatetxeBotoia();
+					} else if (controladorPanelKomanda.konprobatuLokala().equals("Bar")) {
+						controladorPanelKomanda.sakatuPanelTabernaBotoia();
+					} else {
+						controladorPanelKomanda.sakatuPanelKafetegiaBotoia();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -260,24 +271,35 @@ public class PanelKomanda extends JPanel {
 				int kantitatea = Integer.parseInt(nºunidades.getValue().toString());
 
 				if (aukeraPlaterra != null) {
-					int platerKodea = controladorPanelKomanda.platerKodea(aukeraPlaterra);
-					if (kantitatea != 0) {
-						controladorPanelKomanda.sartu(aukeraPlaterra, kantitatea);
-						try {
-							controladorPanelKomanda.incluye(platerKodea, kantitatea);
-						} catch (ClassNotFoundException | SQLException e) {
-							e.printStackTrace();
+					int platerKodea;
+					try {
+						platerKodea = controladorPanelKomanda.platerKodea(aukeraPlaterra);
+						if (kantitatea != 0) {
+							controladorPanelKomanda.sartu(aukeraPlaterra, kantitatea);
+							try {
+								controladorPanelKomanda.incluye(platerKodea, kantitatea);
+							} catch (ClassNotFoundException | SQLException e) {
+								e.printStackTrace();
+							}
 						}
+					} catch (SQLException e1) {
+						e1.printStackTrace();
 					}
 				} else {
-					int stockKantitatea = controladorPanelKomanda.begiratuStock(aukeraProduktua,
-							controladorPanelKomanda.konprobatuNIF());
-					if (kantitatea > stockKantitatea) {
-						JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro", "ERROR",	JOptionPane.ERROR_MESSAGE);
-					} else {
-						if (kantitatea != 0) {
-							controladorPanelKomanda.sartu(aukeraProduktua, kantitatea);
+					int stockKantitatea;
+					try {
+						stockKantitatea = controladorPanelKomanda.begiratuStock(aukeraProduktua,
+								controladorPanelKomanda.konprobatuNIF());
+						if (kantitatea > stockKantitatea) {
+							JOptionPane.showMessageDialog(null, " Ez dago hainbeste unitate stock-ean. Egin apro",
+									"ERROR", JOptionPane.ERROR_MESSAGE);
+						} else {
+							if (kantitatea != 0) {
+								controladorPanelKomanda.sartu(aukeraProduktua, kantitatea);
+							}
 						}
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
 				}
 
@@ -339,7 +361,12 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Primero";
 				int zbk = 1;
-				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				try {
+					produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				} catch (SQLException e) {
+
+					e.printStackTrace();
+				}
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
@@ -351,7 +378,11 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Segundo";
 				int zbk = 2;
-				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				try {
+					produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
@@ -363,7 +394,11 @@ public class PanelKomanda extends JPanel {
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				String tipoa = "Postre";
 				int zbk = 3;
-				produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				try {
+					produktuakEtaMotaJaso(platerMota, tipoa, zbk);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
 			}
 		};
@@ -381,14 +416,19 @@ public class PanelKomanda extends JPanel {
 				rdbtnPostre.setSelected(false);
 				String platerMota = (String) cb_Mota.getSelectedItem();
 				aukeratuBat("Mota");
-				String[] platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
-				produktuArrayaPantailaratu(platerMotaArabera);
-				argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				String[] platerMotaArabera;
+				try {
+					platerMotaArabera = controladorPanelKomanda.platerMotaArabera(platerMota);
+					produktuArrayaPantailaratu(platerMotaArabera);
+					argazkiak.setIcon(new ImageIcon("argazkiak/blanco.jpg"));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		};
 	}
 
-	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) {
+	private void produktuakEtaMotaJaso(String platerMota, String tipoa, int zbk) throws SQLException {
 		JRadioButton botoia = aukeratutakoBotoia(zbk);
 		if (botoia.isSelected() == true) {
 			produktuak = controladorPanelKomanda.platerMota(platerMota, tipoa);

@@ -12,10 +12,12 @@ import ModeloBBDD.metodoakOfrece;
 import ModeloBBDD.metodoakPlaterZerrendak; 
 
 public class Modelo {
-
+	
 	private ArrayList<Karritoa> karroa = new ArrayList<Karritoa>();
 
-	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);													
+	private Erabiltzaile usuarioa = new Erabiltzaile(null, null);		
+	
+	//private Produktua produktuak[] = metodoakPlaterrakEtaProduktuak.elikagaiak();											
 
 	// *****************************************************************************************************************************************************************
 
@@ -23,11 +25,11 @@ public class Modelo {
 		return ModeloBBDD.metodoakKonprobaketak.konprobatuErabiltzaileAtributuenLuzeera(nan, izena, abizena, pasahitza, nif);
 	}
 
-	public String[] produktuakJaso() {
+	public String[] produktuakJaso() throws SQLException {
 		return metodoak.sartuSalgaiak();
 	}
 
-	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) {
+	public ArrayList<Karritoa> sartu(String elikagaia, int kopuru) throws SQLException {
 		return metodoak.sartuProduktuaArrayan(elikagaia, kopuru, karroa);
 	}
 
@@ -43,7 +45,7 @@ public class Modelo {
 		return metodoak.pantailatuProduktuaPrezioa(karroa);
 	}
 
-	public double diruTotala() {
+	public double diruTotala() throws SQLException {
 		return metodoakFuntzioakDeitu.dirutotala();
 	}
 
@@ -57,54 +59,54 @@ public class Modelo {
 
 	// *****************************************************************************************************************************************************************
 
-	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) {
+	public String konprobatuErabiltzailea(String erabiltzailea, String pasahitza) throws SQLException {
 		return metodoakKonprobaketak.konprobatuErabiltzailea(erabiltzailea, pasahitza);
 	}
 
-	public String konprobatuNIF () {
+	public String konprobatuNIF () throws SQLException {
 		return metodoakKonprobaketak.konprobatuNIF(usuarioa.getErabiltzailea());
 	}
 
-	public String konprobatuLokala() {
+	public String konprobatuLokala() throws SQLException {
 		return metodoakKonprobaketak.konprobatuLokala(usuarioa.getErabiltzailea());
 	}
 
-	public String konprobatuLokalarenIzena() {
+	public String konprobatuLokalarenIzena() throws SQLException {
 		return metodoakKonprobaketak.konprobatuLokalarenIzena(konprobatuNIF());
 	}
 
-	public boolean begiratuNAN(String nan) {
+	public boolean begiratuNAN(String nan) throws SQLException {
 		return metodoakKonprobaketak.begiratuNAN(nan);
 	}
 
-	public boolean begiratuNIF(String nif) {
+	public boolean begiratuNIF(String nif) throws SQLException {
 		return metodoakKonprobaketak.begiratuNIF(nif);
 	}
 
-	public int begiratuStock(String produktua,String nif) {
+	public int begiratuStock(String produktua,String nif) throws SQLException {
 		return metodoakKonprobaketak.begiratuStock(produktua, nif);
 	}
 
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________	
 	// ______________________________________________________________________________________________________________________________________________________________________________________________________
 
-	public String[] platerrakJaso() {
+	public String[] platerrakJaso() throws SQLException {
 		return metodoak.sartuPlaterrak();
 	}
 
-	public String[] platerMotak(){
+	public String[] platerMotak() throws SQLException{
 		return metodoakPlaterZerrendak.platerMotak();
 	}
 
-	public String[] platerMota(String platerMota, String tipoa){
+	public String[] platerMota(String platerMota, String tipoa) throws SQLException{
 		return metodoakPlaterZerrendak.platerMota(platerMota, tipoa);
 	}
 
-	public int platerKodea(String platerra){
+	public int platerKodea(String platerra) throws SQLException{
 		return metodoakPlaterZerrendak.jasoPlaterKodea(platerra);
 	}
 
-	public String[] platerMotaArabera(String platerMota) {
+	public String[] platerMotaArabera(String platerMota) throws SQLException {
 		return metodoakPlaterZerrendak.platerMotaArabera(platerMota);
 	}
 
@@ -124,7 +126,7 @@ public class Modelo {
 		return usuarioa;
 	}	
 	
-	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) {
+	public void sartuDatuak(String izena, String abizena, String pasahitza, String NAN, String nif) throws SQLException {
 		ModeloBBDD.metodoakErabiltzaile.sartuDatuak(izena, abizena, pasahitza, NAN, nif);
 	}
 
@@ -181,7 +183,7 @@ public class Modelo {
 		return k1;
 	}
 
-	public void ofrece() {
+	public void ofrece() throws SQLException {
 		metodoakOfrece.localOfrece(konprobatuNIF());
 	}
 
@@ -192,4 +194,13 @@ public class Modelo {
 		Komanda k1 = hasieratuOperaciones();
 		ModeloBBDD.metodoakKomanda.ezabatuKomanda(k1.getTransferentziaZenbakia());
 	}
+	
+	/*public ArrayList<String> Probabilitatea(int zenbaki) throws ClassNotFoundException, SQLException {
+		return metodoakProbabilitatea.Probabilitatea(zenbaki, produktuak);
+	}
+	
+	public ArrayList<String> Probabilitatealocal(int zenbaki) throws ClassNotFoundException, SQLException {
+		return metodoakProbabilitatea.Probabilitatealocala(zenbaki, produktuak, konprobatuNIF());
+	}*/
+	
 }

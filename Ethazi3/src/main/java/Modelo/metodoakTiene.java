@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
-import ModeloBBDD.BBDDKonexioa;
+import ModeloBBDD.ConnectionPool;
 import ModeloBBDD.Kontsultak;
 import ModeloBBDD.metodoakKonprobaketak;  
 
@@ -34,7 +33,7 @@ public class metodoakTiene {
 	}
 
 	public static void insertTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();  
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.insertTiene + "('" + elikagaia + "', " + (ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk() - 1) + ", " + kopurua
 				+ ", " + prezioa + ", '"+ operazioMota +"')");
 		try {
@@ -47,9 +46,9 @@ public class metodoakTiene {
 		}
 	}
 
-	public static boolean begiratuTiene(String Elikagaia, int numTrans) {
+	public static boolean begiratuTiene(String Elikagaia, int numTrans) throws SQLException {
 		boolean egia = false;
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.selectTiene+"'" + Elikagaia
 				+ "' and NumTrans = '" + (numTrans - 1) + "'");
 		try {
@@ -68,7 +67,7 @@ public class metodoakTiene {
 	}
 
 	public static void updateTiene(String elikagaia, int kopurua, double prezioa, String operazioMota) throws ClassNotFoundException, SQLException { 
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.updateTiene+"N_Unidades + " + kopurua + ", Precio = Precio + " + prezioa
 				+ " where NomProducto = '" + elikagaia + "' and NumTrans = "+(ModeloBBDD.metodoJasoTransakzioZbk.jasoTransakzioZbk()-1)+"");
 		try {
@@ -93,8 +92,8 @@ public class metodoakTiene {
 		}
 	}
 	
-	public static double produktuDirua(String elikagaia) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static double produktuDirua(String elikagaia) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		double totala = 0;
 		String query1 = (Kontsultak.selectProduktuSaltzekoPrezioa +"'" + elikagaia + "'");
 		try {
@@ -112,8 +111,8 @@ public class metodoakTiene {
 		return totala;
 	}
 
-	public static String jasoOperazioMota () {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String jasoOperazioMota () throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String operazioMota = null;
 		String query1 = (Kontsultak.selectOperazioMota);
 		try {
@@ -131,8 +130,8 @@ public class metodoakTiene {
 		return operazioMota;
 	}
 
-	public static String begiratuProduktuMota (String produktua) {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static String begiratuProduktuMota (String produktua) throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String produktuMota = null;
 		String query1 = (Kontsultak.selectProduktuMota + "'"+produktua+"'");
 		try {
@@ -151,7 +150,7 @@ public class metodoakTiene {
 	}
 	
 	public static void updateOperaciones() throws ClassNotFoundException, SQLException {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		String query1 = (Kontsultak.updateOperaciones + dirutotala() + " where NumTrans = (select max(NumTrans) from tiene)");
 		try {
 			Statement s;
@@ -163,8 +162,8 @@ public class metodoakTiene {
 		}
 	}
 	
-	public static double dirutotala() {
-		Connection konekzioa = BBDDKonexioa.getConexion();
+	public static double dirutotala() throws SQLException {
+		Connection konekzioa = ConnectionPool.getInstance().getConnection();
 		double diruTotala = 0;
 		String query1 = (Kontsultak.function);
 		try {

@@ -21,7 +21,11 @@ public class ControladorPanelEskaera extends ControladorNagusia{
 	}
 
 	public void ikusiPanelPedidos() {
-		this.panelPedidos = new PanelEskaera(this);
+		try {
+			this.panelPedidos = new PanelEskaera(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		this.vista.ikusiPanela(this.panelPedidos);
 	}
 

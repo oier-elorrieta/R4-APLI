@@ -21,7 +21,11 @@ public class ControladorPanelFaktura extends ControladorNagusia {
 	}
 
 	public void ikusiPanelFaktura() {
-		this.panelFaktura = new PanelFaktura(this);
+		try {
+			this.panelFaktura = new PanelFaktura(this);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		this.vista.ikusiPanela(this.panelFaktura);
 	}
 
