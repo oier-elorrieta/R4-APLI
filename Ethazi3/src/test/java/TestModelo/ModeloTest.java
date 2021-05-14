@@ -149,7 +149,7 @@ public class ModeloTest {
 		float taula[][] = new float[2][3];
 		
 		taula[0][0] = (float) 8.3;
-		taula[0][1] = (float) 9;
+		taula[0][1] = (float) 9; 
 		taula[0][2] = (float) 4;
 		taula[1][0] = (float) 1.3;
 		taula[1][1] = (float) 3.3;

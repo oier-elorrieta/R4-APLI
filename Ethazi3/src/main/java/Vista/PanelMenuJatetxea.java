@@ -82,9 +82,10 @@ public class PanelMenuJatetxea extends JPanel {
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
 
-		mntmXprobababilitatea = new JMenuItem("Probababilitatea");
-		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.RIGHT);
-		mntmXprobababilitatea.setForeground(Color.RED);
+		mntmXprobababilitatea = new JMenuItem("PROBABILITATEA");
+		mntmXprobababilitatea.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmXprobababilitatea.setForeground(Color.BLACK);
 		menuBar.add(mntmXprobababilitatea);
 
 		initializeEvents();
@@ -179,7 +180,7 @@ public class PanelMenuJatetxea extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelJatetxea.probabilitatealocala(3);
+					controladorPanelJatetxea.probabilitatealocala(10);
 				} catch (ClassNotFoundException | SQLException | IOException e) {
 					e.printStackTrace();
 				}

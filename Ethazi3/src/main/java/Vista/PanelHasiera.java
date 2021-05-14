@@ -51,6 +51,8 @@ public class PanelHasiera extends JPanel {
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		tf_1 = new JTextField();
+		tf_1.setForeground(Color.WHITE);
+		tf_1.setEditable(false);
 		tf_1.setBackground(Color.BLUE);
 		tf_1.setBounds(10, 269, 430, 20);
 		add(tf_1);
@@ -101,7 +103,7 @@ public class PanelHasiera extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelHasiera.probabilitatea(3); 
+					controladorPanelHasiera.probabilitatea(10); 
 				} catch (ClassNotFoundException | IOException | SQLException e) {
 					e.printStackTrace();
 				}

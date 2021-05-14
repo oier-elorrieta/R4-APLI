@@ -73,9 +73,10 @@ public class PanelMenuKafetegia extends JPanel {
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
 
-		mntmXprobababilitatea = new JMenuItem("Probababilitatea");
+		mntmXprobababilitatea = new JMenuItem("PROBABILITATEA");
+		mntmXprobababilitatea.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.RIGHT);
-		mntmXprobababilitatea.setForeground(Color.RED);
+		mntmXprobababilitatea.setForeground(Color.BLACK);
 		menuBar.add(mntmXprobababilitatea);
 
 		initializeEvents();
@@ -159,7 +160,7 @@ public class PanelMenuKafetegia extends JPanel {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					controladorPanelMenuKafetegia.probabilitatealocala(3);
+					controladorPanelMenuKafetegia.probabilitatealocala(10);
 				} catch (ClassNotFoundException | SQLException | IOException e) {
 					e.printStackTrace();
 				}

@@ -50,7 +50,7 @@ public class metodoakProbabilitatea {
 
 		// Probabilitate gehiena dutenak fitxerora eramaten du
 		if (produktuEmaitzak.size() != 0) {
-			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, null);
+			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, null, zenbaki);
 		}
 
 		return produktuEmaitzak;
@@ -99,7 +99,7 @@ public class metodoakProbabilitatea {
 
 		// Probabilitate gehiena dutenak fitxerora eramaten du
 		if (produktuEmaitzak.size() != 0) {
-			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, nif);
+			metodoakFitxategiak.sartuDatuakFitxategian(produktuEmaitzak, nif, zenbaki);
 		}
 
 		return produktuEmaitzak;
