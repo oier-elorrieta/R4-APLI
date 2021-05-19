@@ -41,11 +41,13 @@ public class metodoakProbabilitatea {
 
 		// Arraylistan dauden probabilitateak zenbat nahi ditugun aukeratzen du
 		int z = 0;
-		for (int i = emaitzak.size() - 1; z < zenbaki; i--) {
+		for (int i = emaitzak.size() - 1; z <= zenbaki; i--) {
 			azkenEmaitzak.add(emaitzak.get(i));
 			z++;
 		}
 
+		
+		
 		zenbakitikIzenak(azkenEmaitzak, taula, produktuEmaitzak, produktuak);
 
 		// Probabilitate gehiena dutenak fitxerora eramaten du
@@ -90,11 +92,11 @@ public class metodoakProbabilitatea {
 
 		// Arraylistan dauden probabilitateak zenbat nahi ditugun aukeratzen du
 		int z = 0;
-		for (int i = emaitzak.size() - 1; z < zenbaki; i--) {
+		for (int i = emaitzak.size() - 1; z <= zenbaki; i--) {
 			azkenEmaitzak.add(emaitzak.get(i));
 			z++;
 		}
-
+		
 		zenbakitikIzenak(azkenEmaitzak, taula, produktuEmaitzak, produktuak);
 
 		// Probabilitate gehiena dutenak fitxerora eramaten du
