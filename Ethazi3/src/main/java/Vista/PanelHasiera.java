@@ -2,6 +2,9 @@ package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -28,7 +31,7 @@ public class PanelHasiera extends JPanel {
 
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		// _______________________________________________________________________________________________________________________________________________________________________________
 
 		btnDatuBasePo = new JButton("Datu basea populatu");
@@ -40,14 +43,16 @@ public class PanelHasiera extends JPanel {
 		btnBigData.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnBigData.setBounds(220, 77, 220, 150);
 		add(btnBigData);
-		
+
 		btnSarratu = new JButton("SARRATU");
 		btnSarratu.setBounds(351, 238, 89, 23);
 		add(btnSarratu);
 
 		// _______________________________________________________________________________________________________________________________________________________________________________
-		
+
 		tf_1 = new JTextField();
+		tf_1.setForeground(Color.WHITE);
+		tf_1.setEditable(false);
 		tf_1.setBackground(Color.BLUE);
 		tf_1.setBounds(10, 269, 430, 20);
 		add(tf_1);
@@ -73,6 +78,7 @@ public class PanelHasiera extends JPanel {
 	private void initializeEvents() {
 		this.btnDatuBasePo.addActionListener(listenerLehenengoBotoia(this.controladorPanelHasiera));
 		this.btnSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelHasiera));
+		this.btnBigData.addActionListener(listenerBigDataBotoia(this.controladorPanelHasiera));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -84,7 +90,7 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
-	
+
 	private ActionListener listenerSarratuBotoia(ControladorPanelHasiera controladorPanelHasiera) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -92,4 +98,16 @@ public class PanelHasiera extends JPanel {
 			}
 		};
 	} 
+
+	private ActionListener listenerBigDataBotoia(ControladorPanelHasiera controladorPanelHasiera) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelHasiera.probabilitatea(10); 
+				} catch (ClassNotFoundException | IOException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+	}
 }

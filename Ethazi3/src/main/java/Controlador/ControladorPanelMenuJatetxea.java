@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Modelo;
+
 import Vista.PanelMenuJatetxea;
 import Vista.Vista;
 

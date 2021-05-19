@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 
@@ -28,6 +30,7 @@ public class PanelMenuJatetxea extends JPanel {
 	private JMenuBar menuBar;
 	private JMenuItem menuItemSarratu;
 	private JMenuItem menuItemDeslogeatu;
+	private JMenuItem mntmXprobababilitatea;
 
 
 	// *****************************************************************************************************************************************************************************************************
@@ -69,15 +72,21 @@ public class PanelMenuJatetxea extends JPanel {
 		menuBar.setBounds(0, 0, 475, 25);
 		add(menuBar);
 
-		menuItemDeslogeatu = new JMenuItem("           DESLOGEATU");
-		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuItemDeslogeatu = new JMenuItem("DESLOGEATU");
+		menuItemDeslogeatu.setHorizontalAlignment(SwingConstants.CENTER);
 		menuItemDeslogeatu.setFont(new Font("Segoe UI", Font.PLAIN, 10));
 		menuBar.add(menuItemDeslogeatu);
 
-		menuItemSarratu = new JMenuItem("X");
+		menuItemSarratu = new JMenuItem("X       ");
 		menuItemSarratu.setHorizontalAlignment(SwingConstants.RIGHT);
 		menuItemSarratu.setForeground(Color.RED);
 		menuBar.add(menuItemSarratu);
+
+		mntmXprobababilitatea = new JMenuItem("PROBABILITATEA");
+		mntmXprobababilitatea.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+		mntmXprobababilitatea.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmXprobababilitatea.setForeground(Color.BLACK);
+		menuBar.add(mntmXprobababilitatea);
 
 		initializeEvents();
 	}
@@ -92,6 +101,7 @@ public class PanelMenuJatetxea extends JPanel {
 		this.btnKomanda.addActionListener(listenerKomandaBotoia(this.controladorPanelJatetxea));
 		this.menuItemSarratu.addActionListener(listenerSarratuBotoia(this.controladorPanelJatetxea));
 		this.menuItemDeslogeatu.addActionListener(listenerHasieraBotoia(this.controladorPanelJatetxea));
+		this.mntmXprobababilitatea.addActionListener(listenerProbabilitateBotoia(this.controladorPanelJatetxea));
 	}
 
 	// *****************************************************************************************************************************************************************************************************
@@ -161,6 +171,20 @@ public class PanelMenuJatetxea extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				controladorPanelJatetxea.sakatuKomandaPanelaIkustekoBotoia();
 			}
+		};
+	}
+
+	// *****************************************************************************************************************************************************************************************************
+
+	private ActionListener listenerProbabilitateBotoia(ControladorPanelMenuJatetxea controladorPanelJatetxea) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorPanelJatetxea.probabilitatealocala(10);
+				} catch (ClassNotFoundException | SQLException | IOException e) {
+					e.printStackTrace();
+				}
+			}	
 		};
 	}
 }

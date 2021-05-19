@@ -4,9 +4,9 @@ import static org.junit.Assert.assertFalse;
 import java.sql.SQLException;
 import org.junit.Test;
 
-import Modelo.metodoakTiene;
 import ModeloBBDD.metodoakIncluye;
 import ModeloBBDD.metodoakOfrece;
+import ModeloBBDD.metodoakTiene;
 
 public class ModeloTestKonprobaketakTaulak {
 
